@@ -34,7 +34,7 @@
 <plugin name="cordova-plugin-device" spec="1.1.2"/>
 <plugin name="cordova-plugin-splashscreen" spec="3.2.2"/>
 <plugin name="cordova-plugin-whitelist" spec="1.2.2"/>
-<gap:plugin name="org.apache.cordova.camera " source="npm" version="0.2.4" />
+<gap:plugin name="org.apache.cordova.camera" source="npm" version="0.2.4" />
     
 <platform  name="ios">
     <!-- below requires the splash screen plugin -->
