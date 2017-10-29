@@ -6384,7 +6384,7 @@ Created using IcoMoon - icomoon.io
             bottom: 0px;
             -moz-transform: rotate(0);
         }
-    }
+    } 
     @-webkit-keyframes fadeIn {
         0% {
             opacity: 0;
@@ -6440,11 +6440,11 @@ Created using IcoMoon - icomoon.io
     .sidebar-collapse.menu-on-left .navbar-collapse {
         right: auto;
         left: 0;
-        -webkit-transform: translate3d(-300px, 0, 0);
-        -moz-transform: translate3d(-300px, 0, 0);
-        -o-transform: translate3d(-300px, 0, 0);
-        -ms-transform: translate3d(-300px, 0, 0);
-        transform: translate3d(-300px, 0, 0);
+        -webkit-transform: translate3d(-260px, 0, 0);
+        -moz-transform: translate3d(-260px, 0, 0);
+        -o-transform: translate3d(-260px, 0, 0);
+        -ms-transform: translate3d(-260px, 0, 0);
+        transform: translate3d(-260px, 0, 0);
     }
     .nav-open .sidebar-collapse .navbar-collapse {
         -webkit-transform: translate3d(0px, 0, 0);
@@ -6461,11 +6461,11 @@ Created using IcoMoon - icomoon.io
         transform: translate3d(-150px, 0, 0);
     }
     .nav-open .sidebar-collapse .navbar-translate {
-        -webkit-transform: translate3d(-300px, 0, 0);
-        -moz-transform: translate3d(-300px, 0, 0);
-        -o-transform: translate3d(-300px, 0, 0);
-        -ms-transform: translate3d(-300px, 0, 0);
-        transform: translate3d(-300px, 0, 0);
+        -webkit-transform: translate3d(-260px, 0, 0);
+        -moz-transform: translate3d(-260px, 0, 0);
+        -o-transform: translate3d(-260px, 0, 0);
+        -ms-transform: translate3d(-260px, 0, 0);
+        transform: translate3d(-260px, 0, 0);
     }
     .nav-open .sidebar-collapse.menu-on-left .navbar-collapse {
         -webkit-transform: translate3d(0px, 0, 0);
