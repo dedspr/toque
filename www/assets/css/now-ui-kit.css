@@ -5595,6 +5595,19 @@ Created using IcoMoon - icomoon.io
     /* Standard syntax */
 }
 
+.page-header[filter-color="black"] {
+    background: rgba(44, 44, 44, 0.2);
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(90deg, rgba(44, 44, 44, 0.2), #444);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(90deg, rgba(44, 44, 44, 0.2), #444);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(90deg, rgba(44, 44, 44, 0.2), #444);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(0deg, rgba(44, 44, 44, 0.2), #444);
+    /* Standard syntax */
+}
+
 .page-header .container {
     z-index: 2;
 }
@@ -6018,14 +6031,15 @@ Created using IcoMoon - icomoon.io
     .sidebar-collapse .navbar-collapse:before {
         background: #f96332;
         /* For browsers that do not support gradients */
-        background: -webkit-linear-gradient(#f96332 0%, #000 80%);
+        background: -webkit-linear-gradient(#666 0%, #999 90%);
         /* For Safari 5.1 to 6.0 */
-        background: -o-linear-gradient(#f96332 0%, #000 80%);
+        background: -o-linear-gradient(#666 0%, #999 90%);
         /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(#f96332 0%, #000 80%);
+        background: -moz-linear-gradient(#666 0%, #999 90%);
         /* For Firefox 3.6 to 15 */
-        background: linear-gradient(#f96332 0%, #000 80%);
+        background: linear-gradient(#666 0%, #999 90%);
         /* Standard syntax (must be last) */
+                
         opacity: 0.76;
         filter: alpha(opacity=76);
         display: block;
