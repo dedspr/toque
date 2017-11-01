@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <!--
   * Please see the included README.md file for license terms and conditions.
@@ -12,8 +12,26 @@
     <style>
         /* following two viewport lines are equivalent to meta viewport statement above, and is needed for Windows */
         /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
-        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
-        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+        @-ms-viewport {
+            width: 100vw;
+            min-zoom: 100%;
+            zoom: 100%;
+        }
+
+        @viewport {
+            width: 100vw;
+            min-zoom: 100% zoom: 100%;
+        }
+
+        @-ms-viewport {
+            user-zoom: fixed;
+            min-zoom: 100%;
+        }
+
+        @viewport {
+            user-zoom: fixed;
+            min-zoom: 100%;
+        }
         /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
     </style>
 
@@ -25,7 +43,7 @@
 
 
 <body class="index-page sidebar-collapse">
-    
+
     <nav class="navbar navbar-expand-lg bg-default fixed-top navbar-transparent " color-on-scroll="0">
         <div class="container">
             <div class="navbar-translate">
@@ -86,76 +104,94 @@
             </div>
         </div>
     </nav>
-    
-    
+
+
     <div class="wrapper">
         <div class="page-header clear-filter" filter-color="black">
             <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/header.jpg');">
             </div>
             <div class="container">
                 <div class="content-center brand">
-                    <div class="row" style="padding-top: 270px;">
-                        <div class="col-md-10 col-lg-8 col-xl-6 ml-auto mr-auto">
-                            <p class="category">Assista nosso video</p>
-                            <!-- Nav tabs -->
-                            <div class="card">
-                                
-                                <div class="card-body text-black">
-                                    Assita nosso video, falta adicionar tag para a img do video
+                    <div class="row" style="padding-top: 200px;">
+                        <div class="col-md-12">
+
+                            <div class="row" style="padding-top: 270px;">
+                                <div class="col-md-12">
+                                    <p class="category">Assista nosso video</p>
+                                    <!-- Nav tabs -->
+                                    <div class="card">
+
+                                        <div class="card-body text-black">
+                                            Assita nosso video, falta adicionar tag para a img do video
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="category">Baixe nosso eBook</p>
+                                    <!-- Tabs with Background on Card -->
+                                    <div class="card">
+
+                                        <div class="card-body text-black">
+                                            Baixe nosso eBook, falta adicionar tag para a img do eBook
+                                        </div>
+                                    </div>
+                                    <!-- End Tabs on plain Card -->
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-10 col-lg-8 col-xl-6 ml-auto mr-auto">
-                            <p class="category">Baixe nosso eBook</p>
-                            <!-- Tabs with Background on Card -->
-                            <div class="card">
-                                
-                                <div class="card-body text-black">
-                                    Baixe nosso eBook, falta adicionar tag para a img do eBook
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <nav class="navbar navbar-expand-lg bg-info">
+                                        <div class="container">
+                                            <a class="navbar-brand" href="#" id="linkAvaliacao" style="width: 100%; font-weight: bold;">Notamos que não tem avaliação ainda<br>Clique aqui e faça</a>
+                                            <a class="navbar-brand" href="#" id="linkTreinoAvaliacao" style="width: 100%; font-weight: bold;"></a>
+                                        </div>
+                                    </nav>
                                 </div>
                             </div>
-                            <!-- End Tabs on plain Card -->
+
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="main"></div>
         </div>
-        <div class="main">     
-            
-            
-        </div>
-    </div>
-    
-    
-    <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
-    <!-- Place your remote debugging weinre script URL here, if it does not work below. -->
 
-    <!-- See <head> section above for additional JS libraries loaded as part of this application. -->
 
-    <script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
-    <script src="assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-    <script src="assets/js/plugins/bootstrap-switch.js"></script>
-    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-    <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-    <script src="assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-    <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
-    <script src="assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
-    
-    <!-- "Phantom" cordova.js required for projects that use Cordova plugins. -->
-    <script src="cordova.js"></script>
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging weinre script URL here, if it does not work below. -->
+        <!-- See <head> section above for additional JS libraries loaded as part of this application. -->
 
-    <!-- for your event code, see README and file comments for details -->
-    <script src="js/app.js"></script>
-    <!-- for your init code, see README and file comments for details -->
-    <script src="js/init-app.js"></script>
-    <!-- normalizes device and document ready events, see file for details -->
-    <script src="xdk/init-dev.js"></script>
+        <script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+        <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+        <script src="assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+        <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+        <script src="assets/js/plugins/bootstrap-switch.js"></script>
+        <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+        <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+        <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+        <script src="assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+        <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
+        <script src="assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
 
-    <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
-    <!-- Place your remote debugging weinre script URL here, if it does not work above. -->
+        <script src="js/db.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function () {
+                $.localDB.init("selectCountAvaliacao", "home");
+            });
+        </script>
+        <!-- "Phantom" cordova.js required for projects that use Cordova plugins. -->
+        <script src="cordova.js"></script>
+
+        <!-- for your event code, see README and file comments for details -->
+        <script src="js/app.js"></script>
+        <!-- for your init code, see README and file comments for details -->
+        <script src="js/init-app.js"></script>
+        <!-- normalizes device and document ready events, see file for details -->
+        <script src="xdk/init-dev.js"></script>
+
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging weinre script URL here, if it does not work above. -->
 </body>
 
 </html>

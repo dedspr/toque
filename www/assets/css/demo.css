@@ -1,9 +1,6 @@
-.tim-row {
-    margin-bottom: 20px;
-}
-
-.tim-white-buttons {
-    background-color: #777777;
+body
+{
+    background-color: #000;
 }
 
 .typography-line {
@@ -28,13 +25,6 @@
     text-transform: none;
 }
 
-.tim-row {
-    padding-top: 60px;
-}
-
-.tim-row h3 {
-    margin-top: 0;
-}
 
 .switch {
     margin-right: 20px;
