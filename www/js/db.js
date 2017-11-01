@@ -48,12 +48,26 @@ $(function () {
 		/***
 		**** INSERT INTO TABLE ** 
 		***/
-        insertAvaliacao: function (model) {
+        salvarAvaliacao: function () {
             DB.transaction(
                 function (transaction) {
+
+                    var model = {
+                        mao_esquerda: $("input[name=mao_esquerda]:checked").val(),
+                        metodo_exercicios: $("input[name=metodo_exercicios]:checked").val(),
+                        foco_distracao: $("input[name=foco_distracao]:checked").val(),
+                        auto_confianca: $("input[name=auto_confianca]:checked").val(),
+                        tempo_dedicado: $("input[name=tempo_dedicado]:checked").val(),
+                        estudo: $("input[name=estudo]:checked").val(),
+                        arco: $("input[name=arco]:checked").val(),
+                        repertorio: $("input[name=repertorio]:checked").val(),
+                    };
+
                     transaction.executeSql("INSERT INTO avaliacao(data, mao_esquerda, metodo_exercicios, foco_distracao, auto_confianca, tempo_dedicado, estudo, arco, repertorio) "+
                                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-                                           [(new Date()), model.mao_esquerda, model.metodo_exercicios, model.foco_distracao, model.auto_confianca, model.tempo_dedicado, model.estudo, model.arco, model.repertorio]);
+                        [(new Date()), model.mao_esquerda, model.metodo_exercicios, model.foco_distracao, model.auto_confianca, model.tempo_dedicado, model.estudo, model.arco, model.repertorio]);
+
+                    window.location.href = "mapa.html";
                 }
             );
         },
@@ -105,6 +119,9 @@ $(function () {
                     case 'mao_esquerda':
                         menorAvaliacao = "Mão esquerda";
                         break;
+                    case 'metodo_exercicios':
+                        menorAvaliacao = "Métodos/Exercícios";
+                        break;
                     case 'foco_distracao':
                         menorAvaliacao = "Foco/Distração";
                         break;
@@ -121,7 +138,7 @@ $(function () {
                         menorAvaliacao = "Arco";
                         break;
                     case 'repertorio':
-                        menorAvaliacao = "Saturday";
+                        menorAvaliacao = "Repertório";
                 }
                 
                 $("#linkTreinoAvaliacao").html("Notamos que sua nota em <i color='color: red;'>"+menorAvaliacao+"</i> esta baixa<br>Clique aqui para treinar");
