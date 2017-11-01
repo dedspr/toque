@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <!--
   * Please see the included README.md file for license terms and conditions.
@@ -12,8 +12,26 @@
     <style>
         /* following two viewport lines are equivalent to meta viewport statement above, and is needed for Windows */
         /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
-        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
-        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+        @-ms-viewport {
+            width: 100vw;
+            min-zoom: 100%;
+            zoom: 100%;
+        }
+
+        @viewport {
+            width: 100vw;
+            min-zoom: 100% zoom: 100%;
+        }
+
+        @-ms-viewport {
+            user-zoom: fixed;
+            min-zoom: 100%;
+        }
+
+        @viewport {
+            user-zoom: fixed;
+            min-zoom: 100%;
+        }
         /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
     </style>
 
@@ -21,12 +39,12 @@
     <link href="assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="assets/css/demo.css" rel="stylesheet" />
-    
+
 </head>
 
 
 <body class="index-page sidebar-collapse">
-    
+
     <nav class="navbar navbar-expand-lg bg-default fixed-top navbar-transparent " color-on-scroll="0">
         <div class="container">
             <div class="navbar-translate">
@@ -87,38 +105,36 @@
             </div>
         </div>
     </nav>
-    
-    
+
+
     <div class="wrapper">
         <div class="page-header clear-filter" filter-color="black">
             <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/header.jpg');">
             </div>
             <div class="container">
-                
+
 
                 <div class="row" style="padding-top: 170px; ">
-                        <div class="col-md-12 col-lg-12 col-xl-12 ml-auto mr-auto">
-                            <p class="category">Mapa</p>
-                            <!-- Nav tabs -->
-                            <div class="card">
-                                
-                                <div class="card-body text-black">
-                                    <canvas id="canvas" height="300"></canvas>
-                                </div>
+                    <div class="col-md-12 col-lg-12 col-xl-12 ml-auto mr-auto">
+                        <p class="category">Mapa</p>
+                        <!-- Nav tabs -->
+                        <div class="card">
+
+                            <div class="card-body text-black">
+                                <canvas id="canvas" height="300"></canvas>
                             </div>
                         </div>
                     </div>
-                
-                
+                </div>
+
+
             </div>
         </div>
-        <div class="main"></div>
     </div>
-    
-        
+
+
     <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
     <!-- Place your remote debugging weinre script URL here, if it does not work below. -->
-
     <!-- See <head> section above for additional JS libraries loaded as part of this application. -->
 
     <script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
@@ -133,69 +149,15 @@
     <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
     <script src="assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
 
-    
     <script src="js/chart.js/dist/Chart.min.js" type="text/javascript"></script>
 
-    <script>
-
-window.chartColors = {
-	red: 'rgb(255, 99, 132)',
-	orange: 'rgb(255, 159, 64)',
-	yellow: 'rgb(255, 205, 86)',
-	green: 'rgb(75, 192, 192)',
-	blue: 'rgb(54, 162, 235)',
-	purple: 'rgb(153, 102, 255)',
-	grey: 'rgb(201, 203, 207)'
-};
-
-
-    var randomScalingFactor = function() {
-        return Math.round(Math.random() * 100);
-    };
-    var color = Chart.helpers.color;
-    var config = {
-        type: 'radar',
-        data: {
-            labels: [["Eating", "Dinner"], ["Drinking", "Water"], "Sleeping", ["Designing", "Graphics"], "Coding", "Cycling", "Running"],
-            datasets: [{
-                label: "My First dataset",
-                backgroundColor: color(window.chartColors.red).alpha(0.2).rgbString(),
-                borderColor: "#ff0000",
-                pointBackgroundColor: window.chartColors.red,
-                data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor()
-                ]
-            }]
-        },
-        options: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: false,
-                text: 'Mapa'
-            },
-            scale: {
-              ticks: {
-                beginAtZero: true
-              }
-            },
-        },
-        
-            responsive: true,
-    };
-    window.onload = function() {
-        window.myRadar = new Chart(document.getElementById("canvas"), config);
-    };
+    <script src="js/db.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.localDB.init("selectAvaliacao");
+        });
     </script>
-    
-    
+
     <!-- "Phantom" cordova.js required for projects that use Cordova plugins. -->
     <script src="cordova.js"></script>
 
