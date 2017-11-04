@@ -55,14 +55,14 @@ $(function () {
                 function (transaction) {
 
                     var model = {
-                        mao_esquerda: $("input[name=mao_esquerda]:checked").val(),
-                        metodo_exercicios: $("input[name=metodo_exercicios]:checked").val(),
-                        foco_distracao: $("input[name=foco_distracao]:checked").val(),
-                        auto_confianca: $("input[name=auto_confianca]:checked").val(),
-                        tempo_dedicado: $("input[name=tempo_dedicado]:checked").val(),
-                        estudo: $("input[name=estudo]:checked").val(),
-                        arco: $("input[name=arco]:checked").val(),
-                        repertorio: $("input[name=repertorio]:checked").val(),
+                        mao_esquerda: $("#mao_esquerda").val(),
+                        metodo_exercicios: $("#metodo_exercicios").val(),
+                        foco_distracao: $("#foco_distracao").val(),
+                        auto_confianca: $("#auto_confianca").val(),
+                        tempo_dedicado: $("#tempo_dedicado").val(),
+                        estudo: $("#estudo").val(),
+                        arco: $("#arco").val(),
+                        repertorio: $("#repertorio").val(),
                     };
 
                     transaction.executeSql("INSERT INTO avaliacao(data, mao_esquerda, metodo_exercicios, foco_distracao, auto_confianca, tempo_dedicado, estudo, arco, repertorio) "+
@@ -147,8 +147,7 @@ $(function () {
                     
                     window.myRadar = new Chart(document.getElementById("canvas"), config);
                     $("#linkAvaliacao").hide();
-                    $("#canvas").insertAfter("<label>teste</label>");
-                    alert("Teste");
+                    
                     break;
 
                 }
