@@ -22,6 +22,8 @@ $(function () {
                         this.selectCountAvaliacao(param);
                     else if (func == "selectAvaliacao")
                         this.selectAvaliacao();
+                    else if (func == "selectAgenda")
+                        this.selectAgenda();
                 }
             } catch (e) {
                 if (e === 2) {
@@ -42,6 +44,7 @@ $(function () {
             DB.transaction(
                 function (transaction) {
                     transaction.executeSql('CREATE TABLE IF NOT EXISTS avaliacao (data, mao_esquerda, metodo_exercicios, foco_distracao, auto_confianca, tempo_dedicado, estudo, arco, repertorio);', [], that.nullDataHandler, that.errorHandler);
+                    transaction.executeSql('CREATE TABLE IF NOT EXISTS evento (id integer primary key autoincrement, data, hora, tipo, descricao);', [], that.nullDataHandler, that.errorHandler);
                 }
             );
             
@@ -70,6 +73,25 @@ $(function () {
                         [(new Date()), model.mao_esquerda, model.metodo_exercicios, model.foco_distracao, model.auto_confianca, model.tempo_dedicado, model.estudo, model.arco, model.repertorio]);
 
                     window.location.href = "mapa.html";
+                }
+            );
+        },
+
+        salvarEvento: function () {
+            DB.transaction(
+                function (transaction) {
+
+                    var model = {
+                        data: $("#data").val(),
+                        hora: $("#hora").val(),
+                        tipo: $("#tipo").val(),
+                        descricao: $("#descricao").val(),
+                    };
+
+                    transaction.executeSql("INSERT INTO evento(data, hora, tipo, descricao) VALUES (?, ?, ?, ?)", 
+                                            [model.data, model.hora, model.tipo, model.descricao]);
+
+                    window.location.href = "agenda.html";
                 }
             );
         },
@@ -147,7 +169,15 @@ $(function () {
                     
                     window.myRadar = new Chart(document.getElementById("canvas"), config);
                     $("#linkAvaliacao").hide();
-                    
+
+                    var dataAtual = new Date();
+                    var previsao = dataAtual.setDate(data.getDate() + 7);  
+
+                    if (dataAtual > previsao)
+                        $("#linkFazerAvaliacao").show();
+                    else
+                        $("#linkFazerAvaliacao").hide();
+
                     break;
 
                 }
@@ -155,6 +185,7 @@ $(function () {
             else {
                 $("#canvas").hide();
                 $("#linkAvaliacao").show();
+                $("#linkFazerAvaliacao").hide();
             }
         },
         
@@ -214,6 +245,58 @@ $(function () {
             else {
                 $("#linkAvaliacao").show();
             }
+        },
+
+
+
+        selectAgenda: function () {
+            var that = this;
+            
+            DB.transaction(
+                function (transaction) {
+                    transaction.executeSql("SELECT * FROM evento;", [], that.dataSelectAgenda, that.errorHandler);
+
+                }
+            );
+        },
+
+        dataSelectAgenda: function (transaction, results) {
+            var eventos = []
+
+            for (var i = 0; i < results.rows.length; i++) {
+                row = results.rows.item(i);
+                
+                var data = new Date(row['data']);
+                
+                eventos.push({
+                        id: row['id'],
+                        title: (row['tipo'] == 'Outros') ? row['descricao'] : row['tipo'],
+                        start:  (data.getFullYear() + "-" + pad((data.getMonth() + 1), 2) + "-" + pad(data.getDate().toString(), 2)) + 'T' + row['hora'] + ':00'
+                    });                
+            }
+
+            $('#calendar').fullCalendar({
+
+                header: {
+                    left: '',
+                    center: 'title',
+                    right: ''
+                },
+                footer: {
+                    left: 'prev,next today',
+                    center: '',
+                    right: 'month,basicWeek,basicDay'
+                },
+                
+                theme: true,    
+                themeSystem:'bootstrap3',    
+
+                defaultDate: new Date().toISOString().slice(0,10),
+                editable: true,
+                locale: 'pt-br',
+                eventLimit: true, // allow "more" link when too many events
+                events: eventos
+            });
         },
         
         errorHandler: function (transaction, error) {
