@@ -43,7 +43,12 @@
     <link href="assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="assets/css/demo.css" rel="stylesheet" />
-    <link href="assets/css/glyphicons/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="js/barrating/themes/bars-pill.css">
+    <link rel="stylesheet" href="js/barrating/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="js/barrating/themes/css-stars.css">
+    <link rel="stylesheet" href="js/barrating/themes/bootstrap-stars.css">
+    <link rel="stylesheet" href="js/barrating/themes/fontawesome-stars-o.css">
 
 </head>
 
@@ -129,35 +134,123 @@
 
                                             <h5 style="margin-bottom: 0px !important; margin-top: 10px;">Mão esquerda</h5>
 
-                                            <input type="number" name="mao_esquerda" id="mao_esquerda" class="rating" />
+                                            <select id="mao_esquerda" class="rating" autocomplete="off">
+                                                <option value="1" selected="selected">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
 
                                             <h5 style="margin-bottom: 0px !important; margin-top: 10px;">Métodos/Exercícios</h5>
 
-                                            <input type="number" name="metodo_exercicios" id="metodo_exercicios" class="rating" />
+                                            <select id="metodo_exercicios" class="rating" autocomplete="off">
+                                                <option value="1" selected="selected">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
 
                                             <h5 style="margin-bottom: 0px !important; margin-top: 10px;">Foco/Distração</h5>
 
-                                            <input type="number" name="foco_distracao" id="foco_distracao" class="rating" />
+                                            <select id="foco_distracao" class="rating" autocomplete="off">
+                                                <option value="1" selected="selected">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
 
                                             <h5 style="margin-bottom: 0px !important; margin-top: 10px;">Auto confiança</h5>
 
-                                            <input type="number" name="auto_confianca" id="auto_confianca" class="rating" />
+                                            <select id="auto_confianca" class="rating" autocomplete="off">
+                                                <option value="1" selected="selected">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
 
                                             <h5 style="margin-bottom: 0px !important; margin-top: 10px;">Tempo dedicado</h5>
 
-                                            <input type="number" name="tempo_dedicado" id="tempo_dedicado" class="rating" />
+                                            <select id="tempo_dedicado" class="rating" autocomplete="off">
+                                                <option value="1" selected="selected">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
 
                                             <h5 style="margin-bottom: 0px !important; margin-top: 10px;">Estudo</h5>
 
-                                            <input type="number" name="estudo" id="estudo" class="rating" />
+                                            <select id="estudo" class="rating" autocomplete="off">
+                                                <option value="1" selected="selected">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
 
                                             <h5 style="margin-bottom: 0px !important; margin-top: 10px;">Repertório</h5>
 
-                                            <input type="number" name="repertorio" id="repertorio" class="rating" />
+                                            <select id="repertorio" class="rating" autocomplete="off">
+                                                <option value="1" selected="selected">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
 
                                             <h5 style="margin-bottom: 0px !important; margin-top: 10px;">Arco</h5>
 
-                                            <input type="number" name="arco" id="arco" class="rating" />
+                                            <select id="arco" class="rating" autocomplete="off">
+                                                <option value="1" selected="selected">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
 
                                             <div class="row" style="padding-top: 40px;">
                                                 <div class="col-md-12">
@@ -197,11 +290,22 @@
     <script src="assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
     <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
     <script src="assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
-    <script src="js/bootstrap-rating-input.js"></script>
+    
+    <script src="js/barrating/jquery.barrating.min.js"></script>
+
     <script src="js/db.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             $.localDB.init();
+
+            $('.rating').barrating('show', {
+                theme: 'bars-pill',
+                initialRating: '1',
+                showValues: true,
+                showSelectedRating: false,
+                allowEmpty: true,
+                emptyValue: '',
+            });
         });
     </script>
 

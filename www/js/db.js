@@ -290,7 +290,10 @@ $(function () {
                 
                 theme: true,    
                 themeSystem:'bootstrap3',    
-
+                dayClick: function (date, jsEvent, view) {
+                    var res = date.format().toString().split("-");
+                    window.location.href = "evento.html?day=" + res[2] + "&month=" + res[1] + "&year=" + res[0];
+                },
                 defaultDate: new Date().toISOString().slice(0,10),
                 editable: true,
                 locale: 'pt-br',
