@@ -171,12 +171,16 @@ $(function () {
                     $("#linkAvaliacao").hide();
 
                     var dataAtual = new Date();
-                    var previsao = dataAtual.setDate(data.getDate() + 7);  
+                    var previsao = dataAtual.setDate(data.getDate() + 30);  
 
-                    if (dataAtual > previsao)
+                    if (dataAtual > previsao) {
                         $("#linkFazerAvaliacao").show();
-                    else
+                        $("#btnAvaliacao").show();
+                    }
+                    else {
                         $("#linkFazerAvaliacao").hide();
+                        $("#btnAvaliacao").hide();
+                    }
 
                     break;
 
@@ -239,7 +243,7 @@ $(function () {
                         menorAvaliacao = "Repertório";
                 }
                 
-                $("#linkTreinoAvaliacao").html("Sua nota em <b>"+menorAvaliacao+"</b> esta baixa<br>Clique aqui para treinar");
+                $("#linkTreinoAvaliacao").html("Sua nota esta baixa em <b>"+menorAvaliacao+"</b><br>Clique aqui para agendar seu treino");
                 $("#linkTreinoAvaliacao").show();
             }
             else {
