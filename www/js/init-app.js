@@ -137,4 +137,4 @@ app.hideSplashScreen = function() {
     }
 
     app.consoleLog(fName, "exit") ;
-} ;
+};

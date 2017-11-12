@@ -165,18 +165,33 @@
     <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
     <script src="assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
     <script src="js/db.js" type="text/javascript"></script>
+
     <script type="text/javascript">
 
         function validarUsuario() {
-            $.getJSON("http://toqueviolinofacil.com.br/app/usertoquefacil.json", function (result) {
-                $.each(result, function (i, field) {
-                    //$("div").append(field + " ");
-                    if ($("#email").val() == field)
-                        alert("Válido");
-                });
+            
+            $.ajax({
+                type: "POST",
+                url: "http://toqueviolinofacil.com.br/app/app.php",
+                timeout: 3000,
+                contentType: "application/json; charset=utf-8",
+                crossDomain: true,
+                headers: {
+                    'Content-Type': 'Access-Control-Allow-Origin: *; application/x-www-form-urlencoded; charset=UTF-8'
+                },
+                success: function (result, jqXHR) {
+                    $.each(result, function (i, cliente) {
+                        if (cliente == $("#email").val())
+                            alert("Válido");
+                    });
+                },
+                error: function (jqXHR, status) {
+                    // Exibir mensagem de erro, caso aconteça...
+                    alert("O servidor não conseguiu processar o pedido. Tente novamente mais tarde...");
+                },
             });
         }
-
+        
     </script>
 
     <!-- "Phantom" cordova.js required for projects that use Cordova plugins. -->
