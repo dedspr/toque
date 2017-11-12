@@ -169,6 +169,13 @@
     <script type="text/javascript">
         $(function () {
             $.localDB.init("selectCountAvaliacao", "home");
+
+            navigator.notification.alert(
+                'You are the winner!',  // message
+                alertDismissed,         // callback
+                'Game Over',            // title
+                'Done'                  // buttonName
+            );
         });
     </script>
     <!-- "Phantom" cordova.js required for projects that use Cordova plugins. -->
