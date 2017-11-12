@@ -32,6 +32,39 @@
             user-zoom: fixed;
             min-zoom: 100%;
         }
+
+        .w3-animate-fading {
+            animation: fading 10s infinite
+        }
+
+        @keyframes fading {
+            0% {
+                opacity: 0
+            }
+
+            50% {
+                opacity: 1
+            }
+
+            100% {
+                opacity: 0
+            }
+        }
+
+        .w3-content {
+            max-width: 980px;
+            margin: auto
+        }
+
+        .w3-rest {
+            overflow: hidden
+        }
+
+        .w3-section, .w3-code {
+            margin-top: 16px !important;
+            margin-bottom: 16px !important
+        }
+
         /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
     </style>
 
@@ -44,7 +77,7 @@
 
 <body class="index-page sidebar-collapse">
 
-    <nav class="navbar navbar-expand-lg bg-default fixed-top navbar-transparent " color-on-scroll="0">
+    <nav class="navbar navbar-expand-lg bg-black fixed-top navbar-transparent " color-on-scroll="0">
         <div class="container">
             <div class="navbar-translate">
                 <a class="navbar-brand" href="#" rel="tooltip" data-placement="bottom">
@@ -83,19 +116,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/Toque" target="_blank">
-                            <i class="fa fa-twitter"></i>
-                            <p class="d-lg-none d-xl-none">Twitter</p>
+                        <a class="nav-link" rel="tooltip" title="Follow us on Youtube" data-placement="bottom" href="https://www.youtube.com/user/mateustonette" target="_blank">
+                            <i class="fa fa-youtube"></i>
+                            <p class="d-lg-none d-xl-none">Youtube</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/Toque" target="_blank">
+                        <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/Toque-Violino-Facil-1014141428654675/?ref=bookmarks" target="_blank">
                             <i class="fa fa-facebook-square"></i>
                             <p class="d-lg-none d-xl-none">Facebook</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/Toque" target="_blank">
+                        <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/toqueviolinofacil/?hl=pt-br" target="_blank">
                             <i class="fa fa-instagram"></i>
                             <p class="d-lg-none d-xl-none">Instagram</p>
                         </a>
@@ -112,31 +145,28 @@
             <div class="container">
                 <div class="row" style="margin-top: 140px; ">
                     <div class="col-md-12">
-                        <p class="category">Assista nosso video</p>
+                        <p class="category">Confira o que temos pra você</p>
                         <!-- Nav tabs -->
                         <div class="card">
-
                             <div class="card-body text-black">
-                                Assita nosso video, falta adicionar tag para a img do video
+                                <div class="row">
+                                    <div class="col-md-12 w3-content w3-section">
+
+                                        <a href="http://site.toqueviolinofacil.com.br/ebook-toque-violino-facil/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/1.png" style="width:100%"></a>
+                                        <a href="http://site.toqueviolinofacil.com.br/auladevibrato/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/3.png" style="width:100%"></a>
+                                        <a href="http://site.toqueviolinofacil.com.br/aprenda-a-melhorar-o-som-do-violino/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/2.png" style="width:100%"></a>
+                                        <a href="http://site.toqueviolinofacil.com.br/evento/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/4.png" style="width:100%"></a>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <p class="category">Baixe nosso eBook</p>
-                        <!-- Tabs with Background on Card -->
-                        <div class="card">
-
-                            <div class="card-body text-black">
-                                Baixe nosso eBook, falta adicionar tag para a img do eBook
-                            </div>
-                        </div>
-                        <!-- End Tabs on plain Card -->
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
-                        <nav class="navbar navbar-expand-lg bg-white">
+                        <nav class="navbar navbar-expand-lg bg-info">
                             <div class="container">
                                 <a class="navbar-brand" href="avaliacao.html" id="linkAvaliacao" style="width: 100%; text-align: center;">Notamos que não tem avaliação<br>Clique aqui e faça</a>
                                 <a class="navbar-brand" href="agenda.html" id="linkTreinoAvaliacao" style="width: 100%; text-align: center;"></a>
@@ -167,16 +197,25 @@
 
     <script src="js/db.js" type="text/javascript"></script>
     <script type="text/javascript">
+        var myIndex = 0;
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 9000);
+        }
+
         $(function () {
             $.localDB.init("selectCountAvaliacao", "home");
-
-            navigator.notification.alert(
-                'You are the winner!',  // message
-                alertDismissed,         // callback
-                'Game Over',            // title
-                'Done'                  // buttonName
-            );
+            carousel();
         });
+
+        
     </script>
     <!-- "Phantom" cordova.js required for projects that use Cordova plugins. -->
     <script src="cordova.js"></script>
