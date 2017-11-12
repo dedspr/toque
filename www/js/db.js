@@ -45,6 +45,7 @@ $(function () {
                 function (transaction) {
                     transaction.executeSql('CREATE TABLE IF NOT EXISTS avaliacao (data, mao_esquerda, metodo_exercicios, foco_distracao, auto_confianca, tempo_dedicado, estudo, arco, repertorio);', [], that.nullDataHandler, that.errorHandler);
                     transaction.executeSql('CREATE TABLE IF NOT EXISTS evento (id integer primary key autoincrement, data, hora, tipo, descricao);', [], that.nullDataHandler, that.errorHandler);
+                    transaction.executeSql('CREATE TABLE IF NOT EXISTS valido (id integer primary key autoincrement, stvalido);', [], that.nullDataHandler, that.errorHandler);
                 }
             );
             
@@ -250,9 +251,7 @@ $(function () {
                 $("#linkAvaliacao").show();
             }
         },
-
-
-
+        
         selectAgenda: function () {
             var that = this;
             
@@ -304,6 +303,41 @@ $(function () {
                 eventLimit: true, // allow "more" link when too many events
                 events: eventos
             });
+        },
+
+        selectValido: function () {
+            var that = this;
+
+            DB.transaction(
+                function (transaction) {
+                    transaction.executeSql("SELECT * FROM valido where stvalido = 'S';", [], that.dataSelectValido, that.errorHandler);
+
+                }
+            );
+        },
+
+        dataSelectValido: function (transaction, results) {
+
+            var strData = "11/11/2017";
+            var partesData = strData.split("/");
+            var data = new Date(partesData[2], partesData[1] - 1, partesData[0]);
+            if (data < new Date()) {
+                if (results.rows.length == 0) {
+                    window.location.href = "premium.html";
+                }
+            }
+        },
+        
+        salvarValido: function () {
+            DB.transaction(
+                function (transaction) {
+                    
+                    transaction.executeSql("INSERT INTO valido(stvalido) VALUES (?)",
+                        ['S']);
+
+                    window.location.href = "index.html";
+                }
+            );
         },
         
         errorHandler: function (transaction, error) {

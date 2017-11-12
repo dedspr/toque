@@ -168,6 +168,10 @@
 
     <script type="text/javascript">
 
+        $(function () {
+            $.localDB.init();
+        });
+
         function validarUsuario() {
             
             $.ajax({
@@ -182,7 +186,7 @@
                 success: function (result, jqXHR) {
                     $.each(result, function (i, cliente) {
                         if (cliente == $("#email").val())
-                            alert("Válido");
+                            $.localDB.salvarValido();
                     });
                 },
                 error: function (jqXHR, status) {
