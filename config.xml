@@ -36,9 +36,9 @@
   <preference name="Windows.Universal-MinVersion" value="10.0.15063.0" />
   <preference name="Windows.Universal" value="10.0.15063.0" />
   <engine name="windows" spec="^5.0.0" />
-  <plugin name="cordova-plugin-device" spec="~1.1.6" />
-  <plugin name="cordova-plugin-x-toast" spec="~2.6.0" />
-  <plugin name="cordova-plugin-local-notifications" spec="~1.0.0" />
+  <plugin source="npm" name="cordova-plugin-device" spec="~1.1.6" />
+  <plugin source="npm" name="cordova-plugin-x-toast" spec="~2.6.0" />
+  <plugin source="npm" name="cordova-plugin-local-notifications" spec="~1.0.0" />
   <engine name="ios" spec="latest" />
   
 </widget>
