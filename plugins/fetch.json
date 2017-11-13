@@ -1,33 +1,24 @@
 {
-    "de.appplant.cordova.plugin.local-notification": {
+    "cordova-plugin-device": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/katzer/cordova-plugin-local-notifications",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-device"
         },
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-x-toast": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-whitelist@1"
+            "id": "cordova-plugin-x-toast"
         },
         "is_top_level": true,
         "variables": {}
     },
-    "org.apache.cordova.device": {
+    "cordova-plugin-local-notifications": {
         "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.device"
-        },
-        "is_top_level": false,
-        "variables": {}
-    },
-    "org.apache.cordova.dialogs": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.dialogs"
+            "type": "local",
+            "path": "/Users/sebastian/Documents/github/cordova-plugin-local-notifications"
         },
         "is_top_level": true,
         "variables": {}
