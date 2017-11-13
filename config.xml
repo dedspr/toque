@@ -38,7 +38,7 @@
   <engine name="windows" spec="^5.0.0" />
   <plugin name="cordova-plugin-device" spec="~1.1.6" />
   <plugin name="cordova-plugin-x-toast" spec="~2.6.0" />
-  <plugin name="cordova-plugin-local-notifications" spec="~0.0.0" />
+  <plugin name="cordova-plugin-local-notifications" spec="~0.8.5" />
   <engine name="ios" spec="latest" />
   
 </widget>
