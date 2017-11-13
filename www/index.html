@@ -214,7 +214,7 @@
             myIndex++;
             if (myIndex > x.length) { myIndex = 1 }
             x[myIndex - 1].style.display = "block";
-            setTimeout(carousel, 9000);
+            setTimeout(carousel, 5000);
         }
 
         $(function () {
@@ -224,16 +224,40 @@
             $.localDB.selectValido();
 
             carousel();
+            
+          	schedule_time = new Date();
+            
+          	cordova.plugins.notification.local.hasPermission(function(granted){
+          	  if(granted == true)
+          	  {
+          	    schedule(1, 'teste', 'message', schedule_time);
+          	  }
+          	  else
+          	  {
+          	    cordova.plugins.notification.local.registerPermission(function(granted) {
+          	        if(granted == true)
+          	        {
+          	          schedule(1, 'teste', 'message', schedule_time);
+          	        }
+          	        else
+          	        {
+          	          navigator.notification.alert("Reminder cannot be added because app doesn't have permission");
+          	        }
+          	    });
+          	  }
+          	});
 
-            cordova.plugins.notification.local.schedule({
-                id: 1,
-                title: "Message Title",
-                message: "Message Text",
-                firstAt: new Date(),
-                every: 25,
-            });
         });
 
+        function schedule(id, title, message, schedule_time)
+        {
+          	cordova.plugins.notification.local.schedule({
+          	    id: id,
+          	    title: title,
+          	    message: message,
+          	    at: schedule_time
+          	});
+        }
         
     </script>
 
