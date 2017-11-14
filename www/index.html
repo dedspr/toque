@@ -216,6 +216,28 @@
             $.localDB.selectValido();
 
             carousel();
+            
+            document.addEventListener('deviceready', function () {
+                        
+                var data = new Date();
+
+                data.setDate(14);
+                data.setMonth(11);
+                data.setFullYear(2017);
+                data.setHours(21);
+                data.setMinutes(56);
+                data.setSeconds(0);
+
+                cordova.plugins.notification.local.schedule({
+                    title: 'Agenda - Toque Violino Fácil',
+                    text: 'teste'
+                    icon: "file://img/icon.png",
+                    smallIcon: "file://img/icon.png",
+                    //sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
+                    firstAt: data,
+                    every: "day"
+                });
+            }, false);
         });
         
     </script>
