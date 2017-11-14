@@ -99,8 +99,10 @@ $(function () {
                         var from = model.data.split("/");
                         var hour = model.hora.split(":");
                         
-                        data.setDate(from[2], (from[1]), from[0]);
-
+                        //data.setDate(from[2], from[1], from[0]);
+                        data.setDate(from[0]);
+                        data.setMonth(from[1]);
+                        data.setFullYear(from[2]);
                         data.setHours(hour[0]);
                         data.setMinutes(hour[1]);
                         data.setSeconds(0);
