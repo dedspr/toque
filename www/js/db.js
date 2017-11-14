@@ -100,11 +100,9 @@ $(function () {
                         var hour = model.hora.split(":");
                         
                         data.setDate(from[2], (from[1]), from[0]);
-alert(1);
+
                         data.setHours(hour[0]);
-                        alert(2);
                         data.setMinutes(hour[1]);
-                        alert(3);
                         data.setSeconds(0);
                         var dtalarm = new Date(data);
                         alert(dtalarm);
@@ -113,11 +111,11 @@ alert(1);
                             text: (model.tipo == 'Descricao') ? model.descricao : model.tipo,
                             icon: "file://img/icon.png",
                             smallIcon: "file://img/icon.png",
-                            sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
+                            //sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
                             firstAt: dtalarm,
                             every: "day"
                         });
-alert(4);
+
                     }, false);
 
                     window.location.href = "agenda.html";
