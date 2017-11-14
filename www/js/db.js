@@ -13,7 +13,7 @@ $(function () {
                     var shortName = 'DB',
                         version = '1.0',
                         displayName = 'DB App',
-                        maxSize = 100000; 
+                        maxSize = 100000;
 
                     DB = openDatabase(shortName, version, displayName, maxSize);
                     this.createTables();
@@ -48,7 +48,7 @@ $(function () {
                     transaction.executeSql('CREATE TABLE IF NOT EXISTS valido (id integer primary key autoincrement, stvalido);', [], that.nullDataHandler, that.errorHandler);
                 }
             );
-            
+
         },
 
 		/***
@@ -69,8 +69,8 @@ $(function () {
                         repertorio: $("#repertorio").val(),
                     };
 
-                    transaction.executeSql("INSERT INTO avaliacao(data, mao_esquerda, metodo_exercicios, foco_distracao, auto_confianca, tempo_dedicado, estudo, arco, repertorio) "+
-                                           "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                    transaction.executeSql("INSERT INTO avaliacao(data, mao_esquerda, metodo_exercicios, foco_distracao, auto_confianca, tempo_dedicado, estudo, arco, repertorio) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                         [(new Date()), model.mao_esquerda, model.metodo_exercicios, model.foco_distracao, model.auto_confianca, model.tempo_dedicado, model.estudo, model.arco, model.repertorio]);
 
                     window.location.href = "mapa.html";
@@ -89,8 +89,33 @@ $(function () {
                         descricao: $("#descricao").val(),
                     };
 
-                    transaction.executeSql("INSERT INTO evento(data, hora, tipo, descricao) VALUES (?, ?, ?, ?)", 
-                                            [model.data, model.hora, model.tipo, model.descricao]);
+                    transaction.executeSql("INSERT INTO evento(data, hora, tipo, descricao) VALUES (?, ?, ?, ?)",
+                        [model.data, model.hora, model.tipo, model.descricao]);
+
+                    document.addEventListener('deviceready', function () {
+                        alert(device.platform);
+                        var data = new Date();
+
+                        var from = model.data.split("/");
+                        var hour = model.hora.split(":");
+
+                        data.setDate(from[2], from[1] - 1, from[0]);
+                        data.setHours(hour[0]);
+                        data.setMinutes(hour[1]);
+                        data.setSeconds(0);
+                        var dtalarm = new Date(data);
+
+                        cordova.plugins.notification.local.schedule({
+                            title: 'Agenda - Toque Violino Fácil',
+                            text: (model.tipo == 'Descricao') ? model.descricao : model.tipo,
+                            icon: "file://img/icon.png",
+                            smallIcon: "file://img/icon.png",
+                            sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
+                            firstAt: dtalarm,
+                            every: "day"
+                        });
+
+                    }, false);
 
                     window.location.href = "agenda.html";
                 }
@@ -99,7 +124,7 @@ $(function () {
 
         selectAvaliacao: function () {
             var that = this;
-            
+
             DB.transaction(
                 function (transaction) {
                     transaction.executeSql("SELECT * FROM avaliacao ORDER BY data DESC;", [], that.dataSelectAvaliacao, that.errorHandler);
@@ -113,7 +138,7 @@ $(function () {
 
                 // Handle the results
                 var i = 0, row;
-                
+
                 window.chartColors = {
                     red: 'rgb(255, 99, 132)',
                     orange: 'rgb(255, 159, 64)',
@@ -123,7 +148,7 @@ $(function () {
                     purple: 'rgb(153, 102, 255)',
                     grey: 'rgb(201, 203, 207)'
                 };
-                
+
                 var color = Chart.helpers.color;
 
                 for (i; i < results.rows.length; i++) {
@@ -167,12 +192,12 @@ $(function () {
 
                         responsive: true,
                     };
-                    
+
                     window.myRadar = new Chart(document.getElementById("canvas"), config);
                     $("#linkAvaliacao").hide();
 
                     var dataAtual = new Date();
-                    var previsao = dataAtual.setDate(data.getDate() + 30);  
+                    var previsao = dataAtual.setDate(data.getDate() + 30);
 
                     if (dataAtual > previsao) {
                         $("#linkFazerAvaliacao").show();
@@ -193,30 +218,30 @@ $(function () {
                 $("#linkFazerAvaliacao").hide();
             }
         },
-        
+
         selectCountAvaliacao: function (page) {
             var that = this;
             DB.transaction(
                 function (transaction) {
-                    transaction.executeSql("SELECT mao_esquerda, metodo_exercicios, foco_distracao, auto_confianca, tempo_dedicado, estudo, arco, repertorio FROM avaliacao ORDER BY data DESC;", [], 
-                                           that.dataSelectHomeAvaliacao, 
-                                           that.errorHandler);
+                    transaction.executeSql("SELECT mao_esquerda, metodo_exercicios, foco_distracao, auto_confianca, tempo_dedicado, estudo, arco, repertorio FROM avaliacao ORDER BY data DESC;", [],
+                        that.dataSelectHomeAvaliacao,
+                        that.errorHandler);
 
                 }
             );
         },
 
         dataSelectHomeAvaliacao: function (transaction, results) {
-            
+
             $("#linkAvaliacao").hide();
             $("#linkTreinoAvaliacao").hide();
-            
+
             if (results.rows.length > 0) {
                 row = results.rows.item(0);
-                
+
                 var min = Math.min.apply(null, Object.keys(row).map(function (x) { return row[x] }));
                 menorAvaliacao = Object.keys(row).filter(function (x) { return row[x] == min; })[0];
-                
+
                 //, metodo_exercicios, foco_distracao, auto_confianca, tempo_dedicado, estudo, arco, repertorio
                 switch (menorAvaliacao) {
                     case 'mao_esquerda':
@@ -243,18 +268,18 @@ $(function () {
                     case 'repertorio':
                         menorAvaliacao = "Repertório";
                 }
-                
-                $("#linkTreinoAvaliacao").html("Sua nota esta baixa em <b>"+menorAvaliacao+"</b><br>Clique aqui para agendar seu treino");
+
+                $("#linkTreinoAvaliacao").html("Sua nota esta baixa em <b>" + menorAvaliacao + "</b><br>Clique aqui para agendar seu treino");
                 $("#linkTreinoAvaliacao").show();
             }
             else {
                 $("#linkAvaliacao").show();
             }
         },
-        
+
         selectAgenda: function () {
             var that = this;
-            
+
             DB.transaction(
                 function (transaction) {
                     transaction.executeSql("SELECT * FROM evento;", [], that.dataSelectAgenda, that.errorHandler);
@@ -268,14 +293,14 @@ $(function () {
 
             for (var i = 0; i < results.rows.length; i++) {
                 row = results.rows.item(i);
-                
+
                 var data = new Date(row['data']);
-                
+
                 eventos.push({
-                        id: row['id'],
-                        title: (row['tipo'] == 'Outros') ? row['descricao'] : row['tipo'],
-                        start:  (data.getFullYear() + "-" + pad((data.getMonth() + 1), 2) + "-" + pad(data.getDate().toString(), 2)) + 'T' + row['hora'] + ':00'
-                    });                
+                    id: row['id'],
+                    title: (row['tipo'] == 'Outros') ? row['descricao'] : row['tipo'],
+                    start: (data.getFullYear() + "-" + pad((data.getMonth() + 1), 2) + "-" + pad(data.getDate().toString(), 2)) + 'T' + row['hora'] + ':00'
+                });
             }
 
             $('#calendar').fullCalendar({
@@ -290,14 +315,14 @@ $(function () {
                     center: '',
                     right: 'month,basicWeek,basicDay'
                 },
-                
-                theme: true,    
-                themeSystem:'bootstrap3',    
+
+                theme: true,
+                themeSystem: 'bootstrap3',
                 dayClick: function (date, jsEvent, view) {
                     var res = date.format().toString().split("-");
                     window.location.href = "evento.html?day=" + res[2] + "&month=" + res[1] + "&year=" + res[0];
                 },
-                defaultDate: new Date().toISOString().slice(0,10),
+                defaultDate: new Date().toISOString().slice(0, 10),
                 editable: true,
                 locale: 'pt-br',
                 eventLimit: true, // allow "more" link when too many events
@@ -325,11 +350,11 @@ $(function () {
                 window.location.href = "expirou.html";
             }
         },
-        
+
         salvarValido: function () {
             DB.transaction(
                 function (transaction) {
-                    
+
                     transaction.executeSql("INSERT INTO valido(stvalido) VALUES (?)",
                         ['S']);
 
@@ -337,7 +362,7 @@ $(function () {
                 }
             );
         },
-        
+
         errorHandler: function (transaction, error) {
 
             if (error.code === 1) {
@@ -355,9 +380,9 @@ $(function () {
 
     };
 
-});	
+});
 
-function pad (str, max) {
-  str = str.toString();
-  return str.length < max ? pad("0" + str, max) : str;
+function pad(str, max) {
+    str = str.toString();
+    return str.length < max ? pad("0" + str, max) : str;
 }
