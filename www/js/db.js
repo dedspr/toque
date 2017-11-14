@@ -106,7 +106,7 @@ $(function () {
                         data.setMinutes(hour[1]);
                         data.setSeconds(0);
                         var dtalarm = new Date(data);
-
+                        alert(dtalarm);
                         cordova.plugins.notification.local.schedule({
                             title: 'Agenda - Toque Violino Fácil',
                             text: (model.tipo == 'Descricao') ? model.descricao : model.tipo,
