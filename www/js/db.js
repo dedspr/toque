@@ -104,15 +104,15 @@ $(function () {
                         data.setHours(hour[0]);
                         data.setMinutes(hour[1]);
                         data.setSeconds(0);
-                        var dtalarm = new Date(data);
-                        alert(dtalarm);
+                        
+                        alert(data);
                         cordova.plugins.notification.local.schedule({
                             title: 'Agenda - Toque Violino Fácil',
                             text: (model.tipo == 'Descricao') ? model.descricao : model.tipo,
                             icon: "file://img/icon.png",
                             smallIcon: "file://img/icon.png",
                             //sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
-                            firstAt: dtalarm,
+                            firstAt: data,
                             every: "day"
                         });
 
