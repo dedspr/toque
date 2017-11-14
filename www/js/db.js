@@ -318,13 +318,11 @@ $(function () {
 
         dataSelectValido: function (transaction, results) {
 
-            var strData = "18/11/2017";
+            var strData = "19/11/2017";
             var partesData = strData.split("/");
             var data = new Date(partesData[2], partesData[1] - 1, partesData[0]);
             if (data < new Date()) {
-                if (results.rows.length == 0) {
-                    window.location.href = "premium.html";
-                }
+                window.location.href = "expirou.html";
             }
         },
         

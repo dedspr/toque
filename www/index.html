@@ -6,7 +6,7 @@
 <head>
     <title>Toque Violino Facil</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com ws://echo.websocket.org 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
     <style>
@@ -133,9 +133,9 @@
         </div>
     </nav>
 
-    <div class="wrapper">
+    <div class="wrapper"  style="background-image: url('./assets/img/header.jpg');">
         <div class="page-header clear-filter" filter-color="black">
-            <div class="page-header-image" data-parallax="true" style="background-image: url('./assets/img/header.jpg');">
+            <div class="page-header-image" data-parallax="true">
             </div>
             <div class="container">
                 <div class="row" style="margin-top: 140px; ">
@@ -144,16 +144,10 @@
                         <!-- Nav tabs -->
                         <div class="card">
                             <div class="card-body text-black" style="padding: .25em !important">
-                                <div class="row">
-                                    <div class="col-md-12 w3-content w3-section">
-
-                                        <a href="http://site.toqueviolinofacil.com.br/ebook-toque-violino-facil/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/1.png" style="width:100%"></a>
-                                        <a href="http://site.toqueviolinofacil.com.br/auladevibrato/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/3.png" style="width:100%"></a>
-                                        <a href="http://site.toqueviolinofacil.com.br/aprenda-a-melhorar-o-som-do-violino/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/2.png" style="width:100%"></a>
-                                        <a href="http://site.toqueviolinofacil.com.br/evento/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/4.png" style="width:100%"></a>
-
-                                    </div>
-                                </div>
+                                <a href="http://site.toqueviolinofacil.com.br/ebook-toque-violino-facil/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/1.png" style="width:100%"></a>
+                                <a href="http://site.toqueviolinofacil.com.br/auladevibrato/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/3.png" style="width:100%"></a>
+                                <a href="http://site.toqueviolinofacil.com.br/aprenda-a-melhorar-o-som-do-violino/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/2.png" style="width:100%"></a>
+                                <a href="http://site.toqueviolinofacil.com.br/evento/?" class="mySlides" target="_blank"><img class="w3-animate-fading" src="img/slider/4.png" style="width:100%"></a>
                             </div>
                         </div>
                     </div>
@@ -214,7 +208,7 @@
             myIndex++;
             if (myIndex > x.length) { myIndex = 1 }
             x[myIndex - 1].style.display = "block";
-            setTimeout(carousel, 5000);
+            setTimeout(carousel, 6000);
         }
 
         $(function () {
@@ -224,44 +218,16 @@
             $.localDB.selectValido();
 
             carousel();
-            
-          	schedule_time = new Date();
-            
-          	cordova.plugins.notification.local.hasPermission(function(granted){
-          	  if(granted == true)
-          	  {
-          	    schedule(1, 'teste', 'message', schedule_time);
-          	  }
-          	  else
-          	  {
-          	    cordova.plugins.notification.local.registerPermission(function(granted) {
-          	        if(granted == true)
-          	        {
-          	          schedule(1, 'teste', 'message', schedule_time);
-          	        }
-          	        else
-          	        {
-          	          navigator.notification.alert("Reminder cannot be added because app doesn't have permission");
-          	        }
-          	    });
-          	  }
-          	});
-
-        });
-
-        function schedule(id, title, message, schedule_time)
-        {
-            var sound = device.platform != 'iOS' ? 'file://sound.mp3' : 'file://beep.caf';
 
             cordova.plugins.notification.local.schedule({
                 id: 1,
-                title: 'Scheduled with delay',
-                text: 'Test Message 1',
-                trigger: { in: 5, unit: 'second' },
-                sound: sound,
-                badge: 12
+                title: "Message Title",
+                message: "Message Text",
+                firstAt: new Date(),
+                every: 25,
             });
-        }
+        });
+
         
     </script>
 
