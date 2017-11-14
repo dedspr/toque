@@ -11,9 +11,6 @@
   <content src="index.html" />
   <icon src="icon.png" />
   <plugin name="cordova-plugin-whitelist" version="1" />
-  <feature name="Notification">
-    <param name="android-package" value="org.apache.cordova.Notification" />
-  </feature>
   <access origin="*" />
   <allow-intent href="http://*/*" />
   <allow-intent href="https://*/*" />
