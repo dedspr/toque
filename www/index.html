@@ -212,22 +212,22 @@
         }
 
         $(function () {
-
-
             $.localDB.init("selectCountAvaliacao", "home");
             $.localDB.selectValido();
 
             carousel();
+        });
+        
+        document.addEventListener('deviceready', function () {
 
             cordova.plugins.notification.local.schedule({
-                id: 1,
-                title: "Message Title",
-                message: "Message Text",
-                firstAt: new Date(),
-                every: 25,
+                text: "Wake up!",
+                icon: "file://img/icon.png",
+                smallIcon: "file://img/icon.png",
+                every: 2
             });
-        });
 
+        }, false);
         
     </script>
 
