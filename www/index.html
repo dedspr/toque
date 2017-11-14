@@ -220,11 +220,20 @@
         
         document.addEventListener('deviceready', function () {
 
+            var today3 = new Date();
+            var tomorrow3 = new Date();
+            tomorrow3.setDate(today3.getDate());
+            tomorrow3.setHours(18);
+            tomorrow3.setMinutes(10);
+            tomorrow3.setSeconds(0);
+            var tomorrow_at_8_pm = new Date(tomorrow3);
+
             cordova.plugins.notification.local.schedule({
                 text: "Wake up!",
                 icon: "file://img/icon.png",
                 smallIcon: "file://img/icon.png",
-                every: 2
+                firstAt: tomorrow_at_8_pm,
+                every: "day"
             });
 
         }, false);
