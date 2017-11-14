@@ -98,8 +98,8 @@ $(function () {
 
                         var from = model.data.split("/");
                         var hour = model.hora.split(":");
-                        alert(from[2] + "/" + (from[1] - 1) + "/" + from[0]);
-                        data.setDate(from[2], (from[1] - 1), from[0]);
+                        alert(from[2] + "/" + (from[1]) + "/" + from[0]);
+                        data.setDate(from[2], (from[1]), from[0]);
 
                         alert(hour[0] + ":" + hour[1]);
                         data.setHours(hour[0]);
