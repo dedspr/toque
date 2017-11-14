@@ -98,12 +98,13 @@ $(function () {
 
                         var from = model.data.split("/");
                         var hour = model.hora.split(":");
-                        alert(from[2] + "/" + (from[1]) + "/" + from[0]);
+                        
                         data.setDate(from[2], (from[1]), from[0]);
-
-                        alert(hour[0] + ":" + hour[1]);
+alert(1);
                         data.setHours(hour[0]);
+                        alert(2);
                         data.setMinutes(hour[1]);
+                        alert(3);
                         data.setSeconds(0);
                         var dtalarm = new Date(data);
                         alert(dtalarm);
@@ -116,7 +117,7 @@ $(function () {
                             firstAt: dtalarm,
                             every: "day"
                         });
-
+alert(4);
                     }, false);
 
                     window.location.href = "agenda.html";
