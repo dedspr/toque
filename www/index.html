@@ -219,17 +219,22 @@
             
             document.addEventListener('deviceready', function () {
                         
-                var now             = new Date().getTime(),
-    _5_sec_from_now = new Date(now + 5*120000);
+                var data = new Date();
+
+                data.setDate(15);
+                data.setMonth(11);
+                data.setFullYear(2017);
+                data.setHours(0);
+                data.setMinutes(0);
+                data.setSeconds(0);
 
                 cordova.plugins.notification.local.schedule({
-                    //title: 'Agenda - Toque Violino Fácil',
-                    text: 'teste',
-                    icon: "file://img/icon.png",
-                    smallIcon: "file://img/icon.png",
-                    sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
-    at: _5_sec_from_now,
-                });
+        id: 10,
+        title: "Meeting in 15 minutes!",
+        text: "Jour fixe Produktionsbesprechung",
+        at: data,
+        data: { meetingId:"#123FG8" }
+    });
             }, false);
         });
         
