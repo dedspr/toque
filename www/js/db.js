@@ -112,7 +112,7 @@ $(function () {
                             icon: "file://img/icon.png",
                             smallIcon: "file://img/icon.png",
                             sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
-                            trigger: { at: data }
+                            at: data 
                         });
 
                     }, false);
