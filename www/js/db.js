@@ -107,14 +107,13 @@ $(function () {
                         data.setSeconds(0);
                         
                         cordova.plugins.notification.local.schedule({
-                            title: 'Agenda - Toque Violino Fácil',
-                            text: (model.tipo == 'Descricao') ? model.descricao : model.tipo,
+                            title: 'Toque Violino Fácil',
+                            text: ((model.tipo == 'Descricao') ? model.descricao : model.tipo) + " - Hora de praticar",
                             icon: "file://img/icon.png",
                             smallIcon: "file://img/icon.png",
                             sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
                             trigger: { at: data }
                         });
-                        alert(model.tipo);
 
                     }, false);
 

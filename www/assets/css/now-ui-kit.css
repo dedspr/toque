@@ -2,7 +2,7 @@
 body {
     background-image: url('../img/header.jpg');
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: top center;
     background-attachment: fixed;
     background-size: cover;
     background-size: 100%;
