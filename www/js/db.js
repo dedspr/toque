@@ -343,7 +343,7 @@ $(function () {
 
         dataSelectValido: function (transaction, results) {
 
-            var strData = "21/11/2017";
+            var strData = "30/11/2017";
             var partesData = strData.split("/");
             var data = new Date(partesData[2], partesData[1] - 1, partesData[0]);
             if (data < new Date()) {
