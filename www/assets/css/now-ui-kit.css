@@ -5128,7 +5128,7 @@ Created using IcoMoon - icomoon.io
 }
 
 .index-page .page-header {
-    height: 125vh;
+    min-height: 85vh;
 }
 
 .index-page .page-header .container>.content-center {

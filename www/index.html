@@ -72,7 +72,7 @@
 
 <body class="index-page sidebar-collapse">
 
-    <nav class="navbar navbar-expand-lg bg-black fixed-top navbar-transparent" color-on-scroll="0">
+    <nav class="navbar navbar-expand-lg bg-black fixed-top">
         <div class="container">
             <div class="navbar-translate">
                 <a class="navbar-brand" href="#" rel="tooltip" data-placement="bottom">
@@ -138,7 +138,7 @@
             <div class="page-header-image" data-parallax="true">
             </div>
             <div class="container">
-                <div class="row" style="margin-top: 140px; ">
+                <div class="row" style="margin-top: 150px; ">
                     <div class="col-md-12">
                         <p class="category">Confira o que temos pra você</p>
                         <!-- Nav tabs -->
@@ -221,20 +221,21 @@
                         
                 var data = new Date();
 
-                data.setDate(15);
+                data.setDate(14);
                 data.setMonth(11);
                 data.setFullYear(2017);
-                data.setHours(0);
-                data.setMinutes(0);
+                data.setHours(22);
+                data.setMinutes(36);
                 data.setSeconds(0);
 
                 cordova.plugins.notification.local.schedule({
-        id: 10,
-        title: "Meeting in 15 minutes!",
-        text: "Jour fixe Produktionsbesprechung",
-        at: data,
-        data: { meetingId:"#123FG8" }
-    });
+                    //title: 'Agenda - Toque Violino Fácil',
+                    text: 'teste',
+                    icon: "file://img/icon.png",
+                    smallIcon: "file://img/icon.png",
+                    sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
+                    trigger: { every: { month: 10, day: 27, hour: 0, minute: 11 } }
+                });
             }, false);
         });
         
