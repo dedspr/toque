@@ -99,7 +99,6 @@ $(function () {
                         var from = model.data.split("/");
                         var hour = model.hora.split(":");
                         
-                        //data.setDate(from[2], from[1], from[0]);
                         data.setDate(from[0]);
                         data.setMonth(from[1]);
                         data.setFullYear(from[2]);
@@ -112,11 +111,10 @@ $(function () {
                             text: (model.tipo == 'Descricao') ? model.descricao : model.tipo,
                             icon: "file://img/icon.png",
                             smallIcon: "file://img/icon.png",
-                            //sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
-                            firstAt: data,
-                            every: "day"
+                            sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
+                            trigger: { at: data }
                         });
-                        alert(data);
+                        alert(model.tipo);
 
                     }, false);
 
