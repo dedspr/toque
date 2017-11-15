@@ -64,7 +64,7 @@
     <preference name="android-minSdkVersion" value="19"/>
     <preference name="android-targetSdkVersion" value="21"/>
     <preference name="android-installLocation" value="auto"/>
-    <preference name="Fullscreen" value="false"/>
+    <preference name="Fullscreen" value="true"/>
     <preference name="Orientation" value="portrait"/>
     <preference name="android-signed" value="true"/>
     <preference name="AndroidLaunchMode" value="singleTop"/>
@@ -73,7 +73,7 @@
     <preference name="exit-on-suspend" value="false"/>
     <preference name="deployment-target" value="8.0"/>
     <preference name="ios-configuration" value="adhoc"/>
-    <preference name="Fullscreen" value="false"/>
+    <preference name="Fullscreen" value="true"/>
     <preference name="Orientation" value="portrait"/>
   </platform>
   <config-file platform="android" parent="/manifest/application" mode="merge">
