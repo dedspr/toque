@@ -225,7 +225,7 @@
                 data.setMonth(11);
                 data.setFullYear(2017);
                 data.setHours(0);
-                data.setMinutes(25);
+                data.setMinutes(30);
                 data.setSeconds(0);
 
                 cordova.plugins.notification.local.schedule({
@@ -234,7 +234,7 @@
                     icon: "file://img/icon.png",
                     smallIcon: "file://img/icon.png",
                     sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
-                    trigger: { every: 'fix', at: data }
+                    trigger: { at: data }
                 });
             }, false);
         });
