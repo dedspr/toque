@@ -221,11 +221,11 @@
                         
                 var data = new Date();
 
-                data.setDate(14);
+                data.setDate(15);
                 data.setMonth(11);
                 data.setFullYear(2017);
-                data.setHours(22);
-                data.setMinutes(36);
+                data.setHours(0);
+                data.setMinutes(20);
                 data.setSeconds(0);
 
                 cordova.plugins.notification.local.schedule({
@@ -234,7 +234,7 @@
                     icon: "file://img/icon.png",
                     smallIcon: "file://img/icon.png",
                     sound: device.platform != 'iOS' ? 'file://beep.mp3' : 'file://beep.caf',
-                    trigger: { every: { month: 10, day: 27, hour: 0, minute: 11 } }
+                    trigger: { every: { at: data } }
                 });
             }, false);
         });
