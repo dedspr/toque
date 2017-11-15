@@ -100,7 +100,7 @@ $(function () {
                         var hour = model.hora.split(":");
                         
                         data.setDate(from[0]);
-                        data.setMonth(from[1]);
+                        data.setMonth(parseInt(from[1]) - 1);
                         data.setFullYear(from[2]);
                         data.setHours(hour[0]);
                         data.setMinutes(hour[1]);
