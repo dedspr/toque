@@ -105,9 +105,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-neutral" href="#">
+                        <a class="nav-link btn btn-neutral" href="afinador.html">
                             <i class="now-ui-icons arrows-1_share-66"></i>
-                            <p>Premiun</p>
+                            <p>Afinador</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -197,7 +197,6 @@
 
     <script src="js/db.js" type="text/javascript"></script>
 
-
     <script type="text/javascript">
         var myIndex = 0;
         function carousel() {
@@ -214,7 +213,7 @@
 
         $(function () {
             $.localDB.init("selectCountAvaliacao", "home");
-            $.localDB.selectValido();
+            $.localDB.verificaUsuario();
 
             carousel();
         });

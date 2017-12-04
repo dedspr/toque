@@ -45,7 +45,7 @@ $(function () {
                 function (transaction) {
                     transaction.executeSql('CREATE TABLE IF NOT EXISTS avaliacao (data, mao_esquerda, metodo_exercicios, foco_distracao, auto_confianca, tempo_dedicado, estudo, arco, repertorio);', [], that.nullDataHandler, that.errorHandler);
                     transaction.executeSql('CREATE TABLE IF NOT EXISTS evento (id integer primary key autoincrement, data, hora, tipo, descricao);', [], that.nullDataHandler, that.errorHandler);
-                    transaction.executeSql('CREATE TABLE IF NOT EXISTS valido (id integer primary key autoincrement, stvalido);', [], that.nullDataHandler, that.errorHandler);
+                    transaction.executeSql('CREATE TABLE IF NOT EXISTS usuario (email, senha, nome, stpremium);', [], that.nullDataHandler, that.errorHandler);
                 }
             );
 
@@ -118,6 +118,18 @@ $(function () {
                     }, false);
 
                     window.location.href = "agenda.html";
+                }
+            );
+        },
+
+        salvarUsuario: function (email, senha, nome, stpremium) {
+            DB.transaction(
+                function (transaction) {
+
+                    transaction.executeSql("INSERT INTO usuario (email, senha, nome, stpremium) VALUES (?, ?, ?, ?)",
+                        [email, senha, nome, stpremium]);
+
+                    window.location.href = "index.html";
                 }
             );
         },
@@ -294,12 +306,22 @@ $(function () {
             for (var i = 0; i < results.rows.length; i++) {
                 row = results.rows.item(i);
 
-                var data = new Date(row['data']);
+                var data = new Date();
+
+                var from = row['data'].split("/");
+                var hour = row['hora'].split(":");
+
+                data.setDate(from[0]);
+                data.setMonth(parseInt(from[1]) - 1);
+                data.setFullYear(from[2]);
+                data.setHours(hour[0]);
+                data.setMinutes(hour[1]);
+                data.setSeconds(0);
 
                 eventos.push({
                     id: row['id'],
                     title: (row['tipo'] == 'Outros') ? row['descricao'] : row['tipo'],
-                    start: (data.getFullYear() + "-" + pad((data.getMonth() + 1), 2) + "-" + pad(data.getDate().toString(), 2)) + 'T' + row['hora'] + ':00'
+                    start: data
                 });
             }
 
@@ -313,7 +335,7 @@ $(function () {
                 footer: {
                     left: 'prev,next today',
                     center: '',
-                    right: 'month,basicWeek,basicDay'
+                    right: 'month,basicWeek,basicDay,listWeek'
                 },
 
                 theme: true,
@@ -325,42 +347,23 @@ $(function () {
                 defaultDate: new Date().toISOString().slice(0, 10),
                 editable: true,
                 locale: 'pt-br',
-                eventLimit: true, // allow "more" link when too many events
                 events: eventos
             });
         },
 
-        selectValido: function () {
+        verificaUsuario: function () {
             var that = this;
 
             DB.transaction(
                 function (transaction) {
-                    transaction.executeSql("SELECT * FROM valido where stvalido = 'S';", [], that.dataSelectValido, that.errorHandler);
-
+                    transaction.executeSql("SELECT * FROM usuario;", [], that.dataVerificaUsuario, that.errorHandler);
                 }
             );
         },
 
-        dataSelectValido: function (transaction, results) {
-
-            var strData = "30/11/2017";
-            var partesData = strData.split("/");
-            var data = new Date(partesData[2], partesData[1] - 1, partesData[0]);
-            if (data < new Date()) {
-                window.location.href = "expirou.html";
-            }
-        },
-
-        salvarValido: function () {
-            DB.transaction(
-                function (transaction) {
-
-                    transaction.executeSql("INSERT INTO valido(stvalido) VALUES (?)",
-                        ['S']);
-
-                    window.location.href = "index.html";
-                }
-            );
+        dataVerificaUsuario: function (transaction, results) {
+            if (results.rows.length == 0)
+                window.location.href = "login.html";
         },
 
         errorHandler: function (transaction, error) {
