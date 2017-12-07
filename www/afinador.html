@@ -1,6 +1,9 @@
 ﻿<html>
 <head>
     <script>
+        
+        
+
         // Define the set of test frequencies that we'll use to analyze microphone data.
         var C2 = 65.41; // C2 note, in Hz.
         var notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
@@ -15,8 +18,39 @@
         }
 
         window.addEventListener("load", initialize);
+        
+        
+        //var correlation_worker = new Worker("correlation_worker.js");
+        var response = "function compute_correlations(timeseries, test_frequencies, sample_rate) { " +
+        "var scale_factor = 2 * Math.PI / sample_rate; "+
+        "var amplitudes = test_frequencies.map "+
+        "    ( "+
+        "    function (f) { "+
+        "        var frequency = f.frequency; "+
+        "        "+
+        "        var accumulator = [0, 0]; "+
+        "        for (var t = 0; t < timeseries.length; t++) { "+
+        "            accumulator[0] += timeseries[t] * Math.cos(scale_factor * frequency * t); "+
+        "            accumulator[1] += timeseries[t] * Math.sin(scale_factor * frequency * t); "+
+        "        } "+
+        "        "+
+        "        return accumulator; "+
+        "    } "+
+        "); "+
+        " "+
+        "return amplitudes; "+
+        "} "+
+        "self.onmessage = function (event) "+
+        "{ "+
+        "    var timeseries = event.data.timeseries; "+
+        "    var test_frequencies = event.data.test_frequencies; "+
+        "    var sample_rate = event.data.sample_rate; "+
+        "    var amplitudes = compute_correlations(timeseries, test_frequencies, sample_rate); "+
+        "    self.postMessage({ \"timeseries\": timeseries, \"frequency_amplitudes\": amplitudes }); "+
+        "}";
+        var blob = new Blob([response], { type: 'application/javascript' });
+        var correlation_worker = new Worker(URL.createObjectURL(blob));
 
-        var correlation_worker = new Worker("correlation_worker.js");
         correlation_worker.addEventListener("message", interpret_correlation_result);
 
         function initialize() {

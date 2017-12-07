@@ -9,8 +9,6 @@ self.onmessage = function(event)
 
 function compute_correlations(timeseries, test_frequencies, sample_rate)
 {
-	// 2pi * frequency gives the appropriate period to sine.
-	// timeseries index / sample_rate gives the appropriate time coordinate.
 	var scale_factor = 2 * Math.PI / sample_rate;
 	var amplitudes = test_frequencies.map
 	(
@@ -18,7 +16,6 @@ function compute_correlations(timeseries, test_frequencies, sample_rate)
 		{
 			var frequency = f.frequency;
 
-			// Represent a complex number as a length-2 array [ real, imaginary ].
 			var accumulator = [ 0, 0 ];
 			for (var t = 0; t < timeseries.length; t++)
 			{
