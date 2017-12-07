@@ -1,59 +1,23 @@
 ﻿<!DOCTYPE html>
-<html>
-<!--
-  * Please see the included README.md file for license terms and conditions.
-  -->
+<html lang="en">
 <head>
-    <title>Toque Violino Facil</title>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
-    <style>
-        /* following two viewport lines are equivalent to meta viewport statement above, and is needed for Windows */
-        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
-        @-ms-viewport { width: 100vw; min-zoom: 100%; zoom: 100%; }
-        @viewport { width: 100vw; min-zoom: 100% zoom: 100%; }
-        @-ms-viewport { user-zoom: fixed; min-zoom: 100%; }
-        @viewport { user-zoom: fixed; min-zoom: 100%; }
-        .w3-animate-fading { animation: fading 10s infinite }
+    <link rel='stylesheet prefetch' href='assets/fontawesome/css/font-awesome.min.css'>
+    <link rel='stylesheet prefetch' href='js/slick/slick.css'>
+    <link rel="stylesheet" href="assets/css/style.css">
 
-        @keyframes fading {
-            0% { opacity: 0 }
-            50% { opacity: 1 }
-            100% { opacity: 0 }
-        }
-
-        .w3-content { max-width: 980px; margin: auto }
-        .w3-rest { overflow: hidden }
-
-        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
-    </style>
-
-    <link href="js/slick/slick.css" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    
-    <link href="assets/css/player.css" rel="stylesheet" />
 </head>
-
 <body>
-
     <div class="wrapper">
-        <header>
+        <header id="imgPrincipal">
             <nav>
                 <a href="#" id="logo">
                     <img src="img/logo.png" />
                 </a>
-
-                <div class="left-menu">
-                    <h5>Categoria 1</h5>
-                    <h5>Categoria 3</h5>
-                    <h5>Categoria 2</h5>
-                </div>
             </nav>
             <div class="description">
-                <img class="show-logo" src="https://static.tumblr.com/8y60per/DXKnmgo4g/dd_logo2.png" />
-                <p>Descrição do video para treino, isso será adicionado no video.</p>
+                <h1>Nome do vídeo.</h1>
                 <button class="play"><i class="fa fa-play"></i> Assistir</button>
             </div><!--description end-->
         </header>
@@ -61,69 +25,72 @@
             <section>
                 <h3>Categoria 1</h3>
                 <div class="multiple-items">
-                    <img src="http://netflixlife.com/files/2015/08/the-fall.jpg" />
-                    <img src="https://art-s.nflximg.net/f2761/d583c2bd2bfe7a6ce50890ae43af3fc7bd8f2761.jpg" />
-                    <img src="https://i.ytimg.com/vi/7DbSyhXLTGQ/maxresdefault.jpg" />
-                    <img src="https://i.ytimg.com/vi/l4eEcf0Pauo/maxresdefault.jpg" />
-                    <img src="https://i.ytimg.com/vi/riLgCIvE9aU/maxresdefault.jpg" />
-                    <img src="http://media.comicbook.com/2016/07/daredevil-netflix-190285.jpg" />
+                    <img id="cat1img1" src="" />
+                    <img id="cat1img2" src="" />
+                    <img id="cat1img3" src="" />
+                    <img id="cat1img4" src="" />
+                    <img id="cat1img5" src="" />
+                    <img id="cat1img6" src="" />
                 </div><!--multiple-items-->
                 <h3>Categoria 2</h3>
                 <div class="multiple-items">
-                    <img src="https://www.whats-on-netflix.com/wp-content/uploads/2015/11/ftwd-featured.jpg" />
-                    <img src="https://pmcdeadline2.files.wordpress.com/2014/06/house-of-cards-seaosn-2__140603234815.jpg" />
-                    <img src="http://www.underbellyofsunshine.com/wp-content/uploads/2015/04/Bojack%20Horseman.jpg" />
-                    <img src="http://www.themarysue.com/wp-content/uploads/2015/10/maxresdefault5.jpg" />
-                    <img src="https://i.ytimg.com/vi/Ymw5uvViqPU/maxresdefault.jpg" />
-                    <img src="http://media.comicbook.com/2016/07/daredevil-netflix-190285.jpg" />
+                    <img id="cat2img1" src="" />
+                    <img id="cat2img2" src="" />
+                    <img id="cat2img3" src="" />
+                    <img id="cat2img4" src="" />
+                    <img id="cat2img5" src="" />
+                    <img id="cat2img6" src="" />
                 </div><!--multiple-items-->
                 <h3>Categoria 3</h3>
-                <div class="tv-shows">
-                    <img src="http://cdn.collider.com/wp-content/uploads/2015/10/master-of-none-poster-image.jpg" />
-                    <img src="https://oyster.ignimgs.com/wordpress/stg.ign.com/2016/11/netflix-lemony-snicket-unfortunate-eventes-poster.jpg" />
-                    <img src="https://dl9fvu4r30qs1.cloudfront.net/db/88/4cee42424bf685282f3cb6c0686a/my-beautiful-broken-mind-poster.jpg" />
-                    <img src="http://www.etonline.com/media/photo/2016/10/24277797/1900_Gilmore_Girls_Revival_Fall.jpg" />
-                    <img src="http://cdn.collider.com/wp-content/uploads/marco-polo-poster.jpg" />
-                    <img src="http://abduzeedo.com/sites/default/files/originals/6f1c7f40664543.5787e03bf042c.jpg" />
-                    <img src="http://www.ramascreen.com/wp-content/uploads/2014/07/Hemlock-Grove-season-2-poster1.jpg" />
-                    <img src="http://cdn.movieweb.com/img.site/PHfxK9hXDzmVjh_2_l.jpg" />
-                    <img src="http://screencrush.com/files/2015/11/preview.jpg" />
+                <div class="multiple-items">
+                    <img id="cat3img1" src="" />
+                    <img id="cat3img2" src="" />
+                    <img id="cat3img3" src="" />
+                    <img id="cat3img4" src="" />
+                    <img id="cat3img5" src="" />
+                    <img id="cat3img6" src="" />
                 </div><!--tv-shows end-->
             </section>
         </main>
     </div><!--wrapper end-->
-           
-
-    <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
-    <!-- Place your remote debugging weinre script URL here, if it does not work below. -->
-    <!-- See <head> section above for additional JS libraries loaded as part of this application. -->
-
     <script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src="js/slick/slick.min.js" type="text/javascript"></script>
+    <script src='js/slick/slick.min.js'></script>
+    <script src="js/player.js"></script>
 
-    <!-- "Phantom" cordova.js required for projects that use Cordova plugins. -->
-    <script src="cordova.js"></script>
-
-    <!-- for your event code, see README and file comments for details -->
-    <script src="js/app.js"></script>
-    <!-- for your init code, see README and file comments for details -->
-    <script src="js/init-app.js"></script>
-    <!-- normalizes device and document ready events, see file for details -->
-    <script src="xdk/init-dev.js"></script>
-
-    <script src="js/db.js" type="text/javascript"></script>
-    <script src="assets/js/player.js" type="text/javascript"></script>
-
-    <script type="text/javascript">
+    <script>
         
-        $(function () {
-            $.localDB.init();
-        });
-        
+        function thumbVideoVimeo(vimeoVideoID, element, bg) {
+            $.getJSON('http://www.vimeo.com/api/v2/video/' + vimeoVideoID + '.json?callback=?', { format: "json" }, function (data) {
+                if (bg)
+                    $("#" + element).css('background-image', 'url("' + data[0].thumbnail_large + '")');
+                else
+                    $("#" + element).attr('src', data[0].thumbnail_large);
+            });
+        }
+
+        thumbVideoVimeo(242418912, 'imgPrincipal', true);
+
+        thumbVideoVimeo(242418912, 'cat1img1', false);
+        thumbVideoVimeo(242418912, 'cat1img2', false);
+        thumbVideoVimeo(242418912, 'cat1img3', false);
+        thumbVideoVimeo(242418912, 'cat1img4', false);
+        thumbVideoVimeo(242418912, 'cat1img5', false);
+        thumbVideoVimeo(242418912, 'cat1img6', false);
+
+        thumbVideoVimeo(242418912, 'cat2img1', false);
+        thumbVideoVimeo(242418912, 'cat2img2', false);
+        thumbVideoVimeo(242418912, 'cat2img3', false);
+        thumbVideoVimeo(242418912, 'cat2img4', false);
+        thumbVideoVimeo(242418912, 'cat2img5', false);
+        thumbVideoVimeo(242418912, 'cat2img6', false);
+
+        thumbVideoVimeo(242418912, 'cat3img1', false);
+        thumbVideoVimeo(242418912, 'cat3img2', false);
+        thumbVideoVimeo(242418912, 'cat3img3', false);
+        thumbVideoVimeo(242418912, 'cat3img4', false);
+        thumbVideoVimeo(242418912, 'cat3img5', false);
+        thumbVideoVimeo(242418912, 'cat3img6', false);
+
     </script>
-
-    <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
-    <!-- Place your remote debugging weinre script URL here, if it does not work above. -->
 </body>
-
 </html>
