@@ -80,4 +80,10 @@
     <activity android:launchMode="singleTop" />
   </config-file>
 
+  <platform name="android">
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    </config-file>
+  </platform>
+
 </widget>
