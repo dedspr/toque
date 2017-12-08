@@ -114,7 +114,7 @@ img {
 
         .wrapper header .description {
             color: white;
-            width: 400px;
+            /*width: 400px;*/
             margin: auto 0;
             padding-left: 3em;
         }
