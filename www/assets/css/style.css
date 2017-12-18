@@ -18,7 +18,7 @@ img {
 }
 
 .wrapper {
-    min-width: 1000px;
+    min-width: 400px;
     overflow: hidden;
     margin: 0;
 }
@@ -34,6 +34,8 @@ img {
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
     }
 
         .wrapper header nav {
@@ -222,6 +224,7 @@ img {
 
                 .wrapper main section .multiple-items img {
                     margin: 0 .15em;
+                    cursor: pointer;
                 }
 
                     .wrapper main section .multiple-items img:focus {
