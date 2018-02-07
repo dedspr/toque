@@ -49,55 +49,52 @@
 
 <body class="index-page sidebar-collapse">
 
-    <nav class="navbar navbar-expand-lg bg-black fixed-top">
-        <div class="container">
-            <div class="navbar-translate">
-                <a class="navbar-brand" href="#" rel="tooltip" data-placement="bottom">
-                    <img src="img/logo.png" class="rounded">
-                </a>
-            </div>
-        </div>
-    </nav>
-    
     <div class="wrapper">
-        <div class="page-header clear-filter">
-            <div class="page-header-image" data-parallax="true">
-            </div>
+
+        <div class="page-header">
+            
             <div class="container">
-                <div class="row" style="margin-top: 170px;">
-                    <div class="col-md-12">
-                        <p class="category">Sua versão beta expirou</p>
-                        <!-- Nav tabs -->
-                        <div class="card">
-                            <div class="card-body text-black">
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        O período de avaliação terminou!<br>
-                                        Mas temos uma novidade para você<br>
-                                        <br>
-                                        <br>
-                                        Obrigado por utilizar
-                                    </div>
-                                </div>
-                                
-                                
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <nav class="navbar navbar-expand-lg bg-black">
-                                            <div class="container">
-                                                <a class="navbar-brand" href=" http://site.toqueviolinofacil.com.br/portaltoqueviolino/?" target="_blank" style="width: 100%; text-align: center;">Clique e saiba mais</a>
-                                            </div>
-                                        </nav>
-                                    </div>
-                                </div>
-
+                <div class="col-md-4 content-center">
+                    <div class="card card-login card-plain">
+                        <div class="header header-primary text-center">
+                            <div class="logo-container">
+                                <img src="img/logo.png" alt="">
                             </div>
+                        </div>
+                        <div class="content" style="margin-top: 30px;">
+                            <div id="msg"></div>
+                            <div class="input-group form-group-no-border input-lg">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons text_caps-small"></i>
+                                </span>
+                                <input type="text" id="nome" placeholder="Nome do amigo..." class="form-control" />
+                            </div>
+                            <div class="input-group form-group-no-border input-lg">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons users_circle-08"></i>
+                                </span>
+                                <input type="text" id="email" class="form-control" placeholder="E-mail do amigo...">
+                            </div>
+                        </div>
+                        <div class="footer text-center">
+                            <a onclick="cadastroUsuario()" class="btn btn-primary btn-round btn-lg btn-block">Desafiar</a>
                         </div>
                     </div>
                 </div>
             </div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="copyright">
+                        &copy;
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script> 
+                        <a href="#" target="_blank">Toque Violino Fácil</a>.
+                    </div>
+                </div>
+            </footer>
         </div>
+
     </div>
 
     <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
@@ -116,6 +113,45 @@
     <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
     <script src="assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
     <script src="js/db.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $.localDB.init();
+        });
+
+        function cadastroUsuario() {
+
+            if ($("#email").val() != "" && $("#senha").val() != null && $("#nome").val() != null)
+            {
+                //$.localDB.validaUsuario();
+                $.ajax({
+                    type: "POST",
+                    url: "http://toqueviolinofacil.com.br/app/registrousuario.php",
+                    timeout: 3000,
+                    contentType: "application/json; charset=utf-8",
+                    crossDomain: true,
+                    data: { email: $("#email").val(), senha: $("#senha").val(), nome: $("#nome").val() },
+                    headers: {
+                        'Content-Type': 'Access-Control-Allow-Origin: *; application/x-www-form-urlencoded; charset=UTF-8'
+                    },
+                    success: function (result, jqXHR) {
+
+
+
+                    },
+                    error: function (jqXHR, status) {
+                        $("#msg").html('<div class="alert alert-success">O servidor não conseguiu processar o pedido. Tente novamente mais tarde...</div>');
+                    },
+                });
+            }
+            else
+                $("#msg").html('<div class="alert alert-danger">Informe os dados para o registro!</div>');
+
+            
+        }
+
+    </script>
 
     <!-- "Phantom" cordova.js required for projects that use Cordova plugins. -->
     <script src="cordova.js"></script>

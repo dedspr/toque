@@ -362,8 +362,17 @@ $(function () {
         },
 
         dataVerificaUsuario: function (transaction, results) {
+            
             if (results.rows.length == 0)
                 window.location.href = "login.html";
+            else
+            {
+                for (var i = 0; i < results.rows.length; i++) {
+                    row = results.rows.item(i);
+
+                    $("#stpremium").val(row['stpremium']);
+                }
+            }
         },
 
         errorHandler: function (transaction, error) {

@@ -1,95 +1,187 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
 <head>
-    <meta charset="UTF-8">
-    <link rel='stylesheet prefetch' href='assets/fontawesome/css/font-awesome.min.css'>
-    <link rel='stylesheet prefetch' href='js/slick/slick.min.css'>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Toque Violino Facil</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
-</head>
-<body>
-    <div class="wrapper">
-        <header id="imgPrincipal">
-            <nav>
-                <a href="#" id="logo">
-                    <img src="img/logo.png" />
-                </a>
-            </nav>
-            <div class="description">
-                <h1>Nome do vídeo.</h1>
-                <button class="play"><i class="fa fa-play"></i> Assistir</button>
-            </div><!--description end-->
-        </header>
-        <main>
-            <section>
-                <h3>Categoria 1</h3>
-                <div class="multiple-items">
-                    <img id="cat1img1" src="" />
-                    <img id="cat1img2" src="" />
-                    <img id="cat1img3" src="" />
-                    <img id="cat1img4" src="" />
-                    <img id="cat1img5" src="" />
-                    <img id="cat1img6" src="" />
-                </div><!--multiple-items-->
-                <h3>Categoria 2</h3>
-                <div class="multiple-items">
-                    <img id="cat2img1" src="" />
-                    <img id="cat2img2" src="" />
-                    <img id="cat2img3" src="" />
-                    <img id="cat2img4" src="" />
-                    <img id="cat2img5" src="" />
-                    <img id="cat2img6" src="" />
-                </div><!--multiple-items-->
-                <h3>Categoria 3</h3>
-                <div class="multiple-items">
-                    <img id="cat3img1" src="" />
-                    <img id="cat3img2" src="" />
-                    <img id="cat3img3" src="" />
-                    <img id="cat3img4" src="" />
-                    <img id="cat3img5" src="" />
-                    <img id="cat3img6" src="" />
-                </div><!--tv-shows end-->
-            </section>
-        </main>
-    </div><!--wrapper end-->
-    <script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src='js/slick/slick.min.js'></script>
-    <script src="js/player.js"></script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+    <style>
+        /* following two viewport lines are equivalent to meta viewport statement above, and is needed for Windows */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport { width: 100vw; min-zoom: 100%; zoom: 100%; }
+        @viewport { width: 100vw; min-zoom: 100%; zoom: 100%; }
+        @-ms-viewport { user-zoom: fixed; min-zoom: 100%; }
+        @viewport { user-zoom: fixed; min-zoom: 100%; }
 
-    <script>
-        
-        function thumbVideoVimeo(vimeoVideoID, element, bg) {
-            $.getJSON('http://www.vimeo.com/api/v2/video/' + vimeoVideoID + '.json?callback=?', { format: "json" }, function (data) {
-                if (bg)
-                    $("#" + element).css('background-image', 'url("' + data[0].thumbnail_large + '")');
-                else
-                    $("#" + element).attr('src', data[0].thumbnail_large);
-            });
+        .intrinsic-container {
+            position: relative;
+            height: 0;
+            overflow: hidden;
         }
 
-        thumbVideoVimeo(242418912, 'imgPrincipal', true);
+        /* 16x9 Aspect Ratio */
+        .intrinsic-container-16x9 {
+            padding-bottom: 56.25%;
+        }
 
-        thumbVideoVimeo(242418912, 'cat1img1', false);
-        thumbVideoVimeo(242418912, 'cat1img2', false);
-        thumbVideoVimeo(242418912, 'cat1img3', false);
-        thumbVideoVimeo(242418912, 'cat1img4', false);
-        thumbVideoVimeo(242418912, 'cat1img5', false);
-        thumbVideoVimeo(242418912, 'cat1img6', false);
+        /* 4x3 Aspect Ratio */
+        .intrinsic-container-4x3 {
+            padding-bottom: 75%;
+        }
 
-        thumbVideoVimeo(242418912, 'cat2img1', false);
-        thumbVideoVimeo(242418912, 'cat2img2', false);
-        thumbVideoVimeo(242418912, 'cat2img3', false);
-        thumbVideoVimeo(242418912, 'cat2img4', false);
-        thumbVideoVimeo(242418912, 'cat2img5', false);
-        thumbVideoVimeo(242418912, 'cat2img6', false);
+        .intrinsic-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+    </style>
 
-        thumbVideoVimeo(242418912, 'cat3img1', false);
-        thumbVideoVimeo(242418912, 'cat3img2', false);
-        thumbVideoVimeo(242418912, 'cat3img3', false);
-        thumbVideoVimeo(242418912, 'cat3img4', false);
-        thumbVideoVimeo(242418912, 'cat3img5', false);
-        thumbVideoVimeo(242418912, 'cat3img6', false);
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+</head>
+
+
+<body class="index-page sidebar-collapse">
+
+    <nav class="navbar navbar-expand-lg bg-black fixed-top">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="#" rel="tooltip" data-placement="bottom">
+                    <img src="img/logo.png" class="rounded">
+                </a>
+                <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                </button>
+            </div>
+            <div id="menu" class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg"></div>
+        </div>
+    </nav>
+
+    <div class="wrapper" >
+        <div class="page-header clear-filter">
+            <div class="page-header-image" data-parallax="true">
+            </div>
+            <div class="container">
+                <div style="height: 140px; "></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="title" class="category"></p>
+                        <!-- Nav tabs -->
+                        <div class="card">
+                            <div class="card-body text-black" style="padding: .25em !important">
+                                <div id="video" class="intrinsic-container intrinsic-container-16x9"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6" style="width: 60%;">
+                        <nav class="navbar navbar-expand-lg bg-black">
+                            <div class="container">
+                                <a class="navbar-brand" href="#" id="linkMaterial" style="width: 100%; text-align: left;">Baixar material</a>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col-md-6" style="width: 40%;text-align: right;">
+                        <nav class="navbar navbar-expand-lg bg-black">
+                            <div class="container">
+                                <a class="navbar-brand" href="cursos.html" id="linkVoltar" style="width: 100%; text-align: right;">Voltar</a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
+
+    <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/init-app.js"></script>
+    <script src="xdk/init-dev.js"></script>
+    <script src="js/db.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            carregaVideo();
+
+        });
+
+        function carregaVideo() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://toqueviolinofacil.com.br/app/getvideo.php?idvideo=" + getParameterByName('idvideo'), false);
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    var json_string = xhr.responseText;
+                    var json = JSON.parse(json_string);
+
+                    if (json.length > 0) {
+                        $("#title").html(json[0].nmvideo);
+
+                        if (url.indexOf("youtube") != -1)
+                            $("#video").html('<iframe src="https://www.youtube.com/embed/' + parseVideo(json[0].linkvideo) + '?autoplay=1&title=0&byline=0&portrait=0" allowfullscreen></iframe>');
+                        else {
+                            $("#video").html('<iframe src="https://player.vimeo.com/video/' + parseVideo(json[0].linkvideo) + '?autoplay=1&title=0&byline=0&portrait=0" allowfullscreen></iframe>');
+                            $.getJSON('http://www.vimeo.com/api/v2/video/' +  + '.json?callback=?', { fo
+                        }
+                        $("#linkMaterial").attr("href", "http://www.toqueviolinofacil.com.br/app/uploads/" + json[0].pathpdf);
+                        
+                    }
+                }
+                else if (xhr.status == 404) {
+                    intel.xdk.notification.alert("Web Service Doesn't Exist", "Error");
+                }
+                else {
+                    intel.xdk.notification.alert("Unknown error occured while connecting to server", "Error");
+                }
+            }
+            xhr.send();
+        }
+
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        function parseVideo(url) {
+            url.match(/(http:|https:|)\/\/(player.|www.)?(vimeo\.com|youtu(be\.com|\.be|be\.googleapis\.com))\/(video\/|embed\/|watch\?v=|v\/)?([A-Za-z0-9._%-]*)(\&\S+)?/);
+
+            if (RegExp.$3.indexOf('youtu') > -1) {
+                var type = 'youtube';
+            } else if (RegExp.$3.indexOf('vimeo') > -1) {
+                var type = 'vimeo';
+            }
+
+            return RegExp.$6;
+        }
 
     </script>
+
 </body>
+
 </html>

@@ -1,5 +1,4 @@
-body
-{
+body {
     background-color: #000;
 }
 
@@ -11,19 +10,19 @@ body
     width: 100%;
 }
 
-.typography-line span {
-    bottom: 10px;
-    color: #c0c1c2;
-    display: block;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 13px;
-    left: 0;
-    margin-left: 20px;
-    position: absolute;
-    width: 260px;
-    text-transform: none;
-}
+    .typography-line span {
+        bottom: 10px;
+        color: #c0c1c2;
+        display: block;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 13px;
+        left: 0;
+        margin-left: 20px;
+        position: absolute;
+        width: 260px;
+        text-transform: none;
+    }
 
 
 .switch {
@@ -171,31 +170,31 @@ body
     position: sticky;
 }
 
-.fixed-section ul {
-    padding: 0;
-}
+    .fixed-section ul {
+        padding: 0;
+    }
 
-.fixed-section ul li {
-    list-style: none;
-}
+        .fixed-section ul li {
+            list-style: none;
+        }
 
-.fixed-section li a {
-    font-size: 14px;
-    padding: 2px;
-    display: block;
-    color: #666666;
-}
+    .fixed-section li a {
+        font-size: 14px;
+        padding: 2px;
+        display: block;
+        color: #666666;
+    }
 
-.fixed-section li a.active {
-    color: #00bbff;
-}
+        .fixed-section li a.active {
+            color: #00bbff;
+        }
 
-.fixed-section.float {
-    position: fixed;
-    top: 100px;
-    width: 200px;
-    margin-top: 0;
-}
+    .fixed-section.float {
+        position: fixed;
+        top: 100px;
+        width: 200px;
+        margin-top: 0;
+    }
 
 .parallax .parallax-image {
     width: 100%;
@@ -203,9 +202,9 @@ body
     position: absolute;
 }
 
-.parallax .parallax-image img {
-    width: 100%;
-}
+    .parallax .parallax-image img {
+        width: 100%;
+    }
 
 @media (max-width: 768px) {
     .parallax .parallax-image {
@@ -213,10 +212,11 @@ body
         height: 640px;
         overflow: hidden;
     }
-    .parallax .parallax-image img {
-        height: 100%;
-        width: auto;
-    }
+
+        .parallax .parallax-image img {
+            height: 100%;
+            width: auto;
+        }
 }
 
 
@@ -247,9 +247,9 @@ body
     overflow: hidden;
 }
 
-.img-container img {
-    width: 100%;
-}
+    .img-container img {
+        width: 100%;
+    }
 
 .lightbox img {
     width: 100%;
@@ -281,6 +281,7 @@ body
     .btn-morphing {
         margin-bottom: 10px;
     }
+
     .parallax .motto {
         top: 170px;
         margin-top: 0;
@@ -323,14 +324,14 @@ body
     position: relative;
 }
 
-.layers-container img {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    top: 0;
-    left: 0;
-    text-align: center;
-}
+    .layers-container img {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+        text-align: center;
+    }
 
 .animate {
     transition: 1.5s ease-in-out;
@@ -354,9 +355,9 @@ body
     margin-top: 80px;
 }
 
-.sharing-area .btn {
-    margin: 15px 4px 0;
-}
+    .sharing-area .btn {
+        margin: 15px 4px 0;
+    }
 
 .section-thin,
 .section-notifications {
@@ -388,28 +389,28 @@ body
     padding-top: 130px;
 }
 
-.section-download .description {
-    margin-bottom: 60px;
-}
+    .section-download .description {
+        margin-bottom: 60px;
+    }
 
-.section-download h4 {
-    margin-bottom: 25px;
-}
+    .section-download h4 {
+        margin-bottom: 25px;
+    }
 
 .section-examples a {
     text-decoration: none;
 }
 
-.section-examples a+a {
-    margin-top: 30px;
-}
+    .section-examples a + a {
+        margin-top: 30px;
+    }
 
 .section-examples h5 {
     margin-top: 30px;
 }
 
-.components-page .wrapper>.header,
-.tutorial-page .wrapper>.header {
+.components-page .wrapper > .header,
+.tutorial-page .wrapper > .header {
     height: 500px;
     padding-top: 128px;
     background-size: cover;
@@ -476,4 +477,16 @@ body
     .section-navbars .navbar-collapse {
         display: none !important;
     }
+}
+
+.center {
+    width: 90%;
+    height: 50%;
+    overflow: hidden;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }

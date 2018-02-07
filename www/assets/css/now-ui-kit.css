@@ -1,5 +1,6 @@
 
 body {
+    background-color: black;
     background-image: url('../img/header.jpg');
     background-repeat: no-repeat;
     background-position: top center;
@@ -6043,7 +6044,7 @@ Created using IcoMoon - icomoon.io
         color: #FFFFFF;
     }
     .sidebar-collapse .navbar .navbar-nav {
-        margin-top: 53px;
+        margin-top: 25px;
     }
     .sidebar-collapse .navbar .navbar-nav .nav-link {
         padding-top: 0.75rem;

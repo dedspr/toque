@@ -1,20 +1,3 @@
-/*
- * Please see the included README.md file for license terms and conditions.
- */
-
-
-// This file is a suggested starting place for your code.
-// It is completely optional and not required.
-// Note the reference that includes it in the index.html file.
-
-
-/*jslint browser:true, devel:true, white:true, vars:true */
-/*global $:false, intel:false app:false, dev:false, cordova:false */
-
-
-
-// This file contains your event handlers, the center of your application.
-// NOTE: see app.initEvents() in init-app.js for event handler initialization code.
 
 function myEventHandler() {
     "use strict" ;
@@ -36,4 +19,51 @@ function myEventHandler() {
 }
 
 
-// ...additional event handlers here...
+$(function () {
+
+    $("#menu").html('<ul class="navbar-nav">\
+                        <li class="nav-item">\
+                            <a class="nav-link" href="index.html">\
+                                <i class="now-ui-icons education_paper"></i>\
+                                <p>Início</p>\
+                            </a>\
+                        </li>\
+                        <li class="nav-item">\
+                            <a class="nav-link" href="agenda.html">\
+                                <i class="now-ui-icons ui-1_calendar-60"></i>\
+                                <p>Agenda</p>\
+                            </a>\
+                        </li>\
+                        <li class="nav-item">\
+                            <a class="nav-link" href="mapa.html">\
+                                <i class="now-ui-icons location_world"></i>\
+                                <p>Mapa</p>\
+                            </a>\
+                        </li>\
+                        <li class="nav-item">\
+                            <a class="nav-link" href="afinador.html">\
+                                <i class="now-ui-icons media-2_sound-wave"></i>\
+                                <p>Afinador</p>\
+                            </a>\
+                        </li>\
+                        <li class="nav-item">\
+                            <a class="nav-link" href="metronomo.html">\
+                                <i class="now-ui-icons tech_headphones"></i>\
+                                <p>Metrônomo</p>\
+                            </a>\
+                        </li>\
+                        <li class="nav-item">\
+                            <a class="nav-link btn btn-neutral" href="cursos.html">\
+                                <i class="now-ui-icons business_bulb-63"></i>\
+                                <p>Cursos</p>\
+                            </a>\
+                        </li>\
+                        <li class="nav-item">\
+                            <a class="nav-link" href="convide.html">\
+                                <i class="now-ui-icons users_circle-08"></i>\
+                                <p>Convide um amigo</p>\
+                            </a>\
+                        </li>\
+                    </ul>');
+
+});
