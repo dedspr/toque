@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="footer text-center">
-                            <a onclick="cadastroUsuario()" class="btn btn-primary btn-round btn-lg btn-block">Desafiar</a>
+                            <a onclick="enviaEmail()" class="btn btn-primary btn-round btn-lg btn-block">Desafiar</a>
                         </div>
                     </div>
                 </div>
@@ -113,6 +113,7 @@
     <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
     <script src="assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
     <script src="js/db.js" type="text/javascript"></script>
+    <script src="js/smtp.js" type="text/javascript"></script>
 
     <script type="text/javascript">
 
@@ -120,35 +121,23 @@
             $.localDB.init();
         });
 
-        function cadastroUsuario() {
-
-            if ($("#email").val() != "" && $("#senha").val() != null && $("#nome").val() != null)
+        function enviaEmail() {
+            if ($("#email").val() != "" && $("#nome").val() != "")
             {
-                //$.localDB.validaUsuario();
-                $.ajax({
-                    type: "POST",
-                    url: "http://toqueviolinofacil.com.br/app/registrousuario.php",
-                    timeout: 3000,
-                    contentType: "application/json; charset=utf-8",
-                    crossDomain: true,
-                    data: { email: $("#email").val(), senha: $("#senha").val(), nome: $("#nome").val() },
-                    headers: {
-                        'Content-Type': 'Access-Control-Allow-Origin: *; application/x-www-form-urlencoded; charset=UTF-8'
-                    },
-                    success: function (result, jqXHR) {
+                Email.send("toqueviolinofacil@toqueviolinofacil.com.br",
+                    $("#email").val(),
+                    "Convite",
+                    "Olá teste",
+                    "smtp.gmail.com",
+                    "douglas.emanoel@gmail.com",
+                    "@djri,0708");
 
-
-
-                    },
-                    error: function (jqXHR, status) {
-                        $("#msg").html('<div class="alert alert-success">O servidor não conseguiu processar o pedido. Tente novamente mais tarde...</div>');
-                    },
-                });
+                $("#email").val("");
+                $("#nome").val("");
+                $("#msg").html('<div class="alert alert-success">E-mail enviado, obrigado por convidar!</div>');
             }
             else
                 $("#msg").html('<div class="alert alert-danger">Informe os dados para o registro!</div>');
-
-            
         }
 
     </script>

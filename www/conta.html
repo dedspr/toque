@@ -133,28 +133,23 @@
 
         function cadastroUsuario() {
 
-            if ($("#email").val() != "" && $("#senha").val() != null && $("#nome").val() != null)
+            if ($("#email").val() != "" && $("#senha").val() != "" && $("#nome").val() != "")
             {
-                //$.localDB.validaUsuario();
-                $.ajax({
-                    type: "POST",
-                    url: "http://toqueviolinofacil.com.br/app/registrousuario.php",
-                    timeout: 3000,
-                    contentType: "application/json; charset=utf-8",
-                    crossDomain: true,
-                    data: { email: $("#email").val(), senha: $("#senha").val(), nome: $("#nome").val() },
-                    headers: {
-                        'Content-Type': 'Access-Control-Allow-Origin: *; application/x-www-form-urlencoded; charset=UTF-8'
-                    },
-                    success: function (result, jqXHR) {
-
-
-
-                    },
-                    error: function (jqXHR, status) {
-                        $("#msg").html('<div class="alert alert-success">O servidor não conseguiu processar o pedido. Tente novamente mais tarde...</div>');
-                    },
-                });
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "http://toqueviolinofacil.com.br/app/registrousuario.php?email=" + $("#email").val() + "&senha=" + $("#senha").val() + "&nome=" + $("#nome").val(), false);
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        $.localDB.salvarUsuario($("#email").val(), $("#senha").val(), $("#nome").val(), "N");
+                    }
+                    else if (xhr.status == 404) {
+                        intel.xdk.notification.alert("Web Service Doesn't Exist", "Error");
+                    }
+                    else {
+                        intel.xdk.notification.alert("Unknown error occured while connecting to server", "Error");
+                    }
+                }
+                xhr.send();
+                
             }
             else
                 $("#msg").html('<div class="alert alert-danger">Informe os dados para o registro!</div>');
